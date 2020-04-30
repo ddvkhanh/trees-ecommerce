@@ -48,10 +48,10 @@ export default class NavBar extends Component {
                                                 <a href="about.html">About</a>
                                             </li>
                                             <li>
-                                                <a href="shop.html">Shop</a>
+                                                <a href="/shop">Shop</a>
                                                 <ul className="dropdown">
                                                     <li>
-                                                        <a href="shop.html">Shop</a>
+                                                        <a href="/shop">Shop</a>
                                                     </li>
                                                     <li>
                                                         <a href="shop-details.html">Shop Details</a>
@@ -92,7 +92,7 @@ export default class NavBar extends Component {
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="shop.html">Shop</a>
+                                        <a href="/shop">Shop</a>
                                     </li>
                                     <li>
                                         <a href="portfolio.html">Portfolio</a>
