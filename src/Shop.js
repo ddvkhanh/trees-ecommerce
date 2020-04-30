@@ -9,7 +9,6 @@ import Map from "./Map";
 import { Product } from "./components/Product";
 import {Category} from "./components/Category"
 import axios from 'axios';
-import productData from './s.json';
 
 export default function Shop(props) {
 
