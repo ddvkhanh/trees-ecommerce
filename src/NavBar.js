@@ -15,7 +15,7 @@ export default class NavBar extends Component {
               >
                 {/* <!-- Nav Brand --> */}
                 <a href="index.html" className="nav-brand">
-                  <img src="img/core-img/logo.png" alt="" />
+                  <img src="img/core-img/FLogo.png" alt="" />
                 </a>
 
                 {/* <!-- Navbar Toggler --> */}

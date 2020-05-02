@@ -15,13 +15,13 @@ export default class ContactPage extends Component {
         <section className="contact-area section-padding-100-0">
           <div className="container">
             <div className="row align-items-center justify-content-between">
-            <div className="col-12 col-lg-5">
-              {/* <!-- Section Heading --> */}
-              <div className="section-heading">
-                <h2>GET IN TOUCH</h2>
-                <p>Send us a message, we will call back later</p>
-              </div>
-              <ContactForm />
+              <div className="col-12 col-lg-5">
+                {/* <!-- Section Heading --> */}
+                <div className="section-heading">
+                  <h2>GET IN TOUCH</h2>
+                  <p>Send us a message, we will call back later</p>
+                </div>
+                <ContactForm />
               </div>
               <div className="col-12 col-lg-6">
                 <Map />
