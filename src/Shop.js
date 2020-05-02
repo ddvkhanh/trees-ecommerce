@@ -10,6 +10,7 @@ import { Product } from "./components/Product";
 import {Category} from "./components/Category"
 import axios from 'axios';
 
+
 export default function Shop(props) {
 
 
