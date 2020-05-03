@@ -12,60 +12,14 @@ export default class AboutBackground extends Component {
                 {/* <!-- Section Heading --> */}
                 <div className="section-heading">
                   <h2>ABOUT US</h2>
-                  <p>We are leading in the plants service fields.</p>
+                  <p>
+                We are a group of passionate people aiming to promote the tree retardant supply fields. As a Non Profit Organisation (NPO), we deeply care about how how bushfire could affect people's lives and property. The idea initially brought to us due to the surge of bushfires that occurred in Australia.</p>
+                 <p>Founded in 2020, we aim to promote the benefits of fire retardant trees in ensuring the safety of our communities.
+              </p> 
                 </div>
-                <p>
-                  Quisque orci quam, vulputate non commodo finibus, molestie ac
-                  ante. Duis in sceleri quesem. Nulla sit amet varius nunc.
-                  Maecenas dui, tempeu ullam corper in.
-                </p>
+               <img id = "about-team-image" src="img/team-image-pr.png" alt="team-image" />
 
-                {/* <!-- Progress Bar Content Area --> */}
-                <div className="alazea-progress-bar mb-50">
-                  {/* <!-- Single Progress Bar --> */}
-                  <div className="single_progress_bar">
-                    <p>Office plants</p>
-                    <div id="bar1" className="barfiller">
-                      <div className="tipWrap">
-                        <span className="tip"></span>
-                      </div>
-                      <span className="fill" data-percentage="80"></span>
-                    </div>
-                  </div>
-
-                  {/* <!-- Single Progress Bar --> */}
-                  <div className="single_progress_bar">
-                    <p>Field manager</p>
-                    <div id="bar2" className="barfiller">
-                      <div className="tipWrap">
-                        <span className="tip"></span>
-                      </div>
-                      <span className="fill" data-percentage="70"></span>
-                    </div>
-                  </div>
-
-                  {/* <!-- Single Progress Bar --> */}
-                  <div className="single_progress_bar">
-                    <p>Landscape design</p>
-                    <div id="bar3" className="barfiller">
-                      <div className="tipWrap">
-                        <span className="tip"></span>
-                      </div>
-                      <span className="fill" data-percentage="85"></span>
-                    </div>
-                  </div>
-
-                  {/* <!-- Single Progress Bar --> */}
-                  <div className="single_progress_bar">
-                    <p>Garden Care</p>
-                    <div id="bar4" className="barfiller">
-                      <div className="tipWrap">
-                        <span className="tip"></span>
-                      </div>
-                      <span className="fill" data-percentage="65"></span>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
 
               <div className="col-12 col-lg-6">
@@ -77,8 +31,7 @@ export default class AboutBackground extends Component {
                         <img src="img/core-img/b1.png" alt="" />
                         <h5>Quality Products</h5>
                         <p>
-                          Intiam eu sagittis est, at commodo lacini libero.
-                          Praesent dignissim sed odio vel aliquam manta lagorn.
+                          We are selective in choosing our sellers and the products to make sure you are satisfied with your purchase.
                         </p>
                       </div>
                     </div>
@@ -87,10 +40,9 @@ export default class AboutBackground extends Component {
                     <div className="col-12 col-sm-6">
                       <div className="single-benefits-area">
                         <img src="img/core-img/b2.png" alt="" />
-                        <h5>Perfect Service</h5>
+                        <h5>Giveback to Community</h5>
                         <p>
-                          Intiam eu sagittis est, at commodo lacini libero.
-                          Praesent dignissim sed odio vel aliquam manta lagorn.
+                            All of our profits will go back to support the communities to recover from bushfire damages.
                         </p>
                       </div>
                     </div>
@@ -99,10 +51,10 @@ export default class AboutBackground extends Component {
                     <div className="col-12 col-sm-6">
                       <div className="single-benefits-area">
                         <img src="img/core-img/b3.png" alt="" />
-                        <h5>100% Natural</h5>
+                        <h5>Nurture Engagement</h5>
                         <p>
-                          Intiam eu sagittis est, at commodo lacini libero.
-                          Praesent dignissim sed odio vel aliquam manta lagorn.
+                        Your opinions matter! Our tree experts will answer any of your concerns. Leave us a message in our Contact page!
+
                         </p>
                       </div>
                     </div>
@@ -111,10 +63,9 @@ export default class AboutBackground extends Component {
                     <div className="col-12 col-sm-6">
                       <div className="single-benefits-area">
                         <img src="img/core-img/b4.png" alt="" />
-                        <h5>Environmentally friendly</h5>
+                        <h5>Green Network</h5>
                         <p>
-                          Intiam eu sagittis est, at commodo lacini libero.
-                          Praesent dignissim sed odio vel aliquam manta lagorn.
+                          Want to be a part of our green network? Connect to our Seller page and join the environmental-lover family!
                         </p>
                       </div>
                     </div>

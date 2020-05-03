@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+//global variables
+// window.$email="customersupport@greeneryguard.com";
+// window.$phone="+61 440 000 000";
+// window.$address="Hawthorne, Melbourne"
+// window.$openhours="Mon - Sat: 8AM to 5PM"
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

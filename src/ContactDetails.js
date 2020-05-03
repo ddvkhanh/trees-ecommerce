@@ -4,36 +4,6 @@ export default class ContactDetails extends Component {
   render() {
     return (
       <div>
-        {/* <!-- ##### Breadcrumb Area Start ##### --> */}
-        <div className="breadcrumb-area">
-          {/* <!-- Top Breadcrumb Area --> */}
-          <div
-            className="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-            style={{backgroundImage: "url(img/bg-img/24.jpg)"}}
-          >
-            <h2>Contact US</h2>
-          </div>
-          <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <nav aria-label="breadcrumb">
-                  <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                      <a href="#">
-                        <i className="fa fa-home"></i> Home
-                      </a>
-                    </li>
-                    <li className="breadcrumb-item active" aria-current="page">
-                      Contact
-                    </li>
-                  </ol>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* <!-- ##### Breadcrumb Area End ##### --> */}
-
         {/* <!-- ##### Contact Area Info Start ##### --> */}
         <div className="contact-area-info section-padding-0-100">
           <div className="container">

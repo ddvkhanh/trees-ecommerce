@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import NavBar from './NavBar';
+const email=window.$email;
+const phone=window.$phone;
 
 export default class Header extends Component {
   render() {
@@ -15,11 +17,11 @@ export default class Header extends Component {
                   <div className="top-header-meta">
                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="infodeercreative@gmail.com">
                       <i className="fa fa-envelope-o" aria-hidden="true"></i>{" "}
-                      <span>Email: cs-greeneryguard@gmail.com</span>
+                      <span>Email: </span>
                     </a>
                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="+1 234 122 122">
                       <i className="fa fa-phone" aria-hidden="true"></i>{" "}
-                      <span>Call Us: +61 440 000 000</span>
+                      <span>Call Us:  </span>
                     </a>
                   </div>
                   {/* <!-- Top Header Content --> */}

@@ -1,28 +1,21 @@
-
-import React, { useState, useEffect } from 'react';
-import NavBar from "./NavBar";
-import Header from "./Header";
-import Footer from "./Footer";
-import ContactForm from "./ContactForm";
-import ContactDetails from "./ContactDetails";
-import Map from "./Map";
+import React, { useState, useEffect } from "react";
 import { Product } from "./components/Product";
-import {Category} from "./components/Category"
-import axios from 'axios';
+import { Category } from "./components/Category";
+import axios from "axios";
+import BreadCrumbNCover from "./BreadCrumbNCover";
+const pageName = "Shop";
 
 
 export default function Shop(props) {
-
-
   const [data, setData] = useState([]);
 
   useEffect(async () => {
     const result = await axios.get(
-      'https://firetree.azurewebsites.net/api/products',
+      "https://firetree.azurewebsites.net/api/products"
     );
 
     setData(result.data);
-  },[]);
+  }, []);
 
   //get category list
   var categories = data.map(function (item) {
@@ -30,34 +23,13 @@ export default function Shop(props) {
   });
 
   //remove duplicate category name to use at Category Component
-  var categoryUnique = categories.filter(function(item, index){
+  var categoryUnique = categories.filter(function (item, index) {
     return categories.indexOf(item) >= index;
   });
 
-
-
-
   return (
     <div>
-      <div className="breadcrumb-area">
-        {/* Top Breadcrumb Area */}
-        <div className="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style={{ backgroundImage: 'url(img/bg-img/24.jpg)' }}>
-          <h2>Shop</h2>
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item"><a href="#"><i className="fa fa-home" /> Home</a></li>
-                  <li className="breadcrumb-item active" aria-current="page">Shop</li>
-                </ol>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* ##### Breadcrumb Area End ##### */}
+      <BreadCrumbNCover pageName={pageName} />
       {/* ##### Shop Area Start ##### */}
       <section className="shop-page section-padding-0-100">
         <div className="container">
@@ -98,10 +70,24 @@ export default function Shop(props) {
                   <h4 className="widget-title">Prices</h4>
                   <div className="widget-desc">
                     <div className="slider-range">
-                      <div data-min={8} data-max={30} data-unit="$" className="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min={8} data-value-max={30} data-label-result="Price:">
+                      <div
+                        data-min={8}
+                        data-max={30}
+                        data-unit="$"
+                        className="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                        data-value-min={8}
+                        data-value-max={30}
+                        data-label-result="Price:"
+                      >
                         <div className="ui-slider-range ui-widget-header ui-corner-all" />
-                        <span className="ui-slider-handle ui-state-default ui-corner-all first-handle" tabIndex={0} />
-                        <span className="ui-slider-handle ui-state-default ui-corner-all" tabIndex={0} />
+                        <span
+                          className="ui-slider-handle ui-state-default ui-corner-all first-handle"
+                          tabIndex={0}
+                        />
+                        <span
+                          className="ui-slider-handle ui-state-default ui-corner-all"
+                          tabIndex={0}
+                        />
                       </div>
                       <div className="range-price">Price: $8 - $30</div>
                     </div>
@@ -113,21 +99,23 @@ export default function Shop(props) {
                   <div className="widget-desc">
                     {/* Single Checkbox */}
                     <div className="custom-control custom-checkbox d-flex align-items-center mb-2">
-                      <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                      <label className="custom-control-label" htmlFor="customCheck1">All plants <span className="text-muted">(72)</span></label>
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        id="customCheck1"
+                      />
+                      <label
+                        className="custom-control-label"
+                        htmlFor="customCheck1"
+                      >
+                        All plants <span className="text-muted">(72)</span>
+                      </label>
                     </div>
                     {/* Single Checkbox */}
 
-                    {categoryUnique.map(item => (
-
+                    {categoryUnique.map((item) => (
                       <Category categoryName={item} />
-  
                     ))}
-                    
-                    
-
-
-
                   </div>
                 </div>
                 {/* Shop Widget */}
@@ -136,28 +124,73 @@ export default function Shop(props) {
                   <div className="widget-desc">
                     {/* Single Checkbox */}
                     <div className="custom-control custom-checkbox d-flex align-items-center mb-2">
-                      <input type="checkbox" className="custom-control-input" id="customCheck7" />
-                      <label className="custom-control-label" htmlFor="customCheck7">New arrivals</label>
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        id="customCheck7"
+                      />
+                      <label
+                        className="custom-control-label"
+                        htmlFor="customCheck7"
+                      >
+                        New arrivals
+                      </label>
                     </div>
                     {/* Single Checkbox */}
                     <div className="custom-control custom-checkbox d-flex align-items-center mb-2">
-                      <input type="checkbox" className="custom-control-input" id="customCheck8" />
-                      <label className="custom-control-label" htmlFor="customCheck8">Alphabetically, A-Z</label>
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        id="customCheck8"
+                      />
+                      <label
+                        className="custom-control-label"
+                        htmlFor="customCheck8"
+                      >
+                        Alphabetically, A-Z
+                      </label>
                     </div>
                     {/* Single Checkbox */}
                     <div className="custom-control custom-checkbox d-flex align-items-center mb-2">
-                      <input type="checkbox" className="custom-control-input" id="customCheck9" />
-                      <label className="custom-control-label" htmlFor="customCheck9">Alphabetically, Z-A</label>
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        id="customCheck9"
+                      />
+                      <label
+                        className="custom-control-label"
+                        htmlFor="customCheck9"
+                      >
+                        Alphabetically, Z-A
+                      </label>
                     </div>
                     {/* Single Checkbox */}
                     <div className="custom-control custom-checkbox d-flex align-items-center mb-2">
-                      <input type="checkbox" className="custom-control-input" id="customCheck10" />
-                      <label className="custom-control-label" htmlFor="customCheck10">Price: low to high</label>
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        id="customCheck10"
+                      />
+                      <label
+                        className="custom-control-label"
+                        htmlFor="customCheck10"
+                      >
+                        Price: low to high
+                      </label>
                     </div>
                     {/* Single Checkbox */}
                     <div className="custom-control custom-checkbox d-flex align-items-center">
-                      <input type="checkbox" className="custom-control-input" id="customCheck11" />
-                      <label className="custom-control-label" htmlFor="customCheck11">Price: high to low</label>
+                      <input
+                        type="checkbox"
+                        className="custom-control-input"
+                        id="customCheck11"
+                      />
+                      <label
+                        className="custom-control-label"
+                        htmlFor="customCheck11"
+                      >
+                        Price: high to low
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -168,7 +201,9 @@ export default function Shop(props) {
                     {/* Single Best Seller Products */}
                     <div className="single-best-seller-product d-flex align-items-center">
                       <div className="product-thumbnail">
-                        <a href="shop-details.html"><img src="img/bg-img/4.jpg" alt="" /></a>
+                        <a href="shop-details.html">
+                          <img src="img/bg-img/4.jpg" alt="" />
+                        </a>
                       </div>
                       <div className="product-info">
                         <a href="shop-details.html">Cactus Flower</a>
@@ -185,7 +220,9 @@ export default function Shop(props) {
                     {/* Single Best Seller Products */}
                     <div className="single-best-seller-product d-flex align-items-center">
                       <div className="product-thumbnail">
-                        <a href="shop-details.html"><img src="img/bg-img/5.jpg" alt="" /></a>
+                        <a href="shop-details.html">
+                          <img src="img/bg-img/5.jpg" alt="" />
+                        </a>
                       </div>
                       <div className="product-info">
                         <a href="shop-details.html">Tulip Flower</a>
@@ -202,7 +239,9 @@ export default function Shop(props) {
                     {/* Single Best Seller Products */}
                     <div className="single-best-seller-product d-flex align-items-center">
                       <div className="product-thumbnail">
-                        <a href="shop-details.html"><img src="img/bg-img/34.jpg" alt="" /></a>
+                        <a href="shop-details.html">
+                          <img src="img/bg-img/34.jpg" alt="" />
+                        </a>
                       </div>
                       <div className="product-info">
                         <a href="shop-details.html">Recuerdos Plant</a>
@@ -226,24 +265,33 @@ export default function Shop(props) {
                 <div className="row">
                   {/* Single Product Area */}
 
-
-
-
-                  {data.map(item => (
-
-                    <Product productName={item.title} productImage={item.imageLargeUrl} productPrice={item.sellingPrice} sellerName={item.businessProfile.name} />
-
+                  {data.map((item) => (
+                    <Product
+                      productName={item.title}
+                      productImage={item.imageLargeUrl}
+                      productPrice={item.sellingPrice}
+                      sellerName={item.businessProfile.name}
+                    />
                   ))}
-
-
-
                 </div>
                 {/* Pagination */}
                 <nav aria-label="Page navigation">
                   <ul className="pagination">
-                    <li className="page-item"><a className="page-link" href="#">1</a></li>
-                    <li className="page-item"><a className="page-link" href="#">2</a></li>
-                    <li className="page-item"><a className="page-link" href="#"><i className="fa fa-angle-right" /></a></li>
+                    <li className="page-item">
+                      <a className="page-link" href="#">
+                        1
+                      </a>
+                    </li>
+                    <li className="page-item">
+                      <a className="page-link" href="#">
+                        2
+                      </a>
+                    </li>
+                    <li className="page-item">
+                      <a className="page-link" href="#">
+                        <i className="fa fa-angle-right" />
+                      </a>
+                    </li>
                   </ul>
                 </nav>
               </div>
@@ -253,12 +301,12 @@ export default function Shop(props) {
       </section>
       {/* ##### Shop Area End ##### */}
       {/* ##### Footer Area Start ##### */}
-      <footer className="footer-area bg-img" style={{ backgroundImage: 'url(img/bg-img/3.jpg)' }}>
+      <footer
+        className="footer-area bg-img"
+        style={{ backgroundImage: "url(img/bg-img/3.jpg)" }}
+      >
         {/* Main Footer Area */}
-
       </footer>
     </div>
-
-  )
-
+  );
 }
