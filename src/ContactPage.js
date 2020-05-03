@@ -10,7 +10,6 @@ export default class ContactPage extends Component {
   render() {
     return (
       <div>
-        <Header />
         <ContactDetails />
         <section className="contact-area section-padding-100-0">
           <div className="container">
@@ -29,7 +28,6 @@ export default class ContactPage extends Component {
             </div>
           </div>
         </section>
-        <Footer />
       </div>
     );
   }
