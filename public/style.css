@@ -17,6 +17,16 @@ Version: - v1.0
 @import url(css/font-awesome.min.css);
 @import url(css/elegant-icon.css);
 /* :: 3.0 Base CSS */
+#header-logo{
+  width: 300px;
+}
+
+#icon-attribute {
+  font-size:0.75em;
+}
+#icon-attribute a {
+  font-size:0.75em;
+}
 * {
   margin: 0;
   padding: 0; 

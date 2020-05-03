@@ -15,11 +15,11 @@ export default class Header extends Component {
                   <div className="top-header-meta">
                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="infodeercreative@gmail.com">
                       <i className="fa fa-envelope-o" aria-hidden="true"></i>{" "}
-                      <span>Email: infodeercreative@gmail.com</span>
+                      <span>Email: cs-greeneryguard@gmail.com</span>
                     </a>
                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="+1 234 122 122">
                       <i className="fa fa-phone" aria-hidden="true"></i>{" "}
-                      <span>Call Us: +1 234 122 122</span>
+                      <span>Call Us: +61 440 000 000</span>
                     </a>
                   </div>
                   {/* <!-- Top Header Content --> */}

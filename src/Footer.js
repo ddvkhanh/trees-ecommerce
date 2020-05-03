@@ -16,12 +16,11 @@ export default class Footer extends Component {
                 <div className="single-footer-widget">
                   <div className="footer-logo mb-30">
                     <a href="#">
-                      <img src="img/core-img/logo.png" alt="" />
+                      <img src="img/core-img/Logo03.png" alt="" />
                     </a>
                   </div>
                   <p>
-                    Lorem ipsum dolor sit samet, consectetur adipiscing elit.
-                    India situs atione mantor
+                    Want to keep up with our activities? Subscribe to our social media channels below and stay in touch!
                     </p>
                   <div className="social-info">
                     <a href="#">
@@ -79,7 +78,7 @@ export default class Footer extends Component {
                         <a href="#">Orders</a>
                       </li>
                       <li>
-                        <a href="#">Policities</a>
+                        <a href="#">Policies</a>
                       </li>
                     </ul>
                   </nav>
@@ -172,6 +171,8 @@ export default class Footer extends Component {
                       Colorlib
                       </a>
                     {/* <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> */}
+                    <div id="icon-attribute">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
                   </p>
                 </div>
               </div>

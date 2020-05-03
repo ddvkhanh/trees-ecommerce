@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import NavBar from "./NavBar";
-import Header from "./Header";
-import Footer from "./Footer";
 import ContactForm from "./ContactForm";
 import ContactDetails from "./ContactDetails";
 import Map from "./Map";

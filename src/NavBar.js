@@ -10,7 +10,7 @@ export default class NavBar extends Component {
                         <nav className="classy-navbar justify-content-between" id="alazeaNav">
                             {/* <!-- Nav Brand --> */}
                             <a href="index.html" className="nav-brand">
-                                <img src="img/core-img/logo.png" alt="" />
+                                <img id="header-logo" src="img/core-img/Logo03.png" alt="" />
                             </a>
                             {/* <!-- Navbar Toggler --> */}
                             <div className="classy-navbar-toggler">
@@ -36,7 +36,7 @@ export default class NavBar extends Component {
                                         <a href="/">Home</a>
                                     </li>
                                     <li>
-                                        <a href="about.html">About</a>
+                                        <a href="/about">About</a>
                                     </li>
                                     <li>
                                         <a href="#">Pages</a>
@@ -45,7 +45,7 @@ export default class NavBar extends Component {
                                                 <a href="index.html">Home</a>
                                             </li>
                                             <li>
-                                                <a href="about.html">About</a>
+                                                <a href="/about">About</a>
                                             </li>
                                             <li>
                                                 <a href="/shop">Shop</a>
@@ -75,17 +75,7 @@ export default class NavBar extends Component {
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li>
-                                                <a href="blog.html">Blog</a>
-                                                <ul className="dropdown">
-                                                    <li>
-                                                        <a href="blog.html">Blog</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-post.html">Blog Details</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
+                      
                                             <li>
                                                 <a href="contact.html">Contact</a>
                                             </li>
