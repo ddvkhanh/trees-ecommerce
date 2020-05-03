@@ -16,9 +16,10 @@ export default function Shop(props) {
 
   const [data, setData] = useState([]);
 
+  //get data from back end
   useEffect(async () => {
     const result = await axios.get(
-      'https://firetree.azurewebsites.net/api/products',
+      'https://firetree.azurewebsites.net/api/products/popular',
     );
 
     setData(result.data);
@@ -29,12 +30,18 @@ export default function Shop(props) {
     return item.category.title;
   });
 
+
   //remove duplicate category name to use at Category Component
   var categoryUnique = categories.filter(function(item, index){
     return categories.indexOf(item) >= index;
   });
 
-
+  //count will be represent how many selling item for each category
+  var count ={};
+  categories.forEach(function(i){ count[i] = (count[i] || 0 ) + 1 } );
+  
+  //count total item to display at "All plants"
+  const totalCount = categories.length;
 
 
   return (
@@ -114,13 +121,13 @@ export default function Shop(props) {
                     {/* Single Checkbox */}
                     <div className="custom-control custom-checkbox d-flex align-items-center mb-2">
                       <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                      <label className="custom-control-label" htmlFor="customCheck1">All plants <span className="text-muted">(72)</span></label>
+                      <label className="custom-control-label" htmlFor="customCheck1">All plants <span className="text-muted">({totalCount})</span></label>
                     </div>
                     {/* Single Checkbox */}
 
                     {categoryUnique.map(item => (
 
-                      <Category categoryName={item} />
+                      <Category categoryName={item} categoryCount={count[item]} />
   
                     ))}
                     
@@ -226,16 +233,9 @@ export default function Shop(props) {
                 <div className="row">
                   {/* Single Product Area */}
 
-
-
-
                   {data.map(item => (
-
                     <Product productName={item.title} productImage={item.imageLargeUrl} productPrice={item.sellingPrice} sellerName={item.businessProfile.name} />
-
                   ))}
-
-
 
                 </div>
                 {/* Pagination */}
