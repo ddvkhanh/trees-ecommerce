@@ -7,7 +7,7 @@ import ContactForm from "./ContactForm";
 import ContactDetails from "./ContactDetails";
 import Map from "./Map";
 import { Product } from "./components/Product";
-import {Category} from "./components/Category"
+import { Category } from "./components/Category"
 import axios from 'axios';
 
 
@@ -16,14 +16,42 @@ export default function Shop(props) {
 
   const [data, setData] = useState([]);
 
+  const getData = async (query) => {
+    // console.log(query);
+
+    const result = await axios.get(
+      // urlGetData,
+
+      "https://firetree.azurewebsites.net/api/products/search?page=1&size=8&" + query
+    );
+    console.log(result.data);
+
+    setData(result.data.items);
+  }
+
+  let query = '';
+
+  const getSortData = (data) => {  
+    let sortValue = data.target.value;
+    if (sortValue == '1') {
+      query = 'sortby=al-as';
+    } else if (sortValue == '2') {
+      query = 'sortby=al-ds';
+    } else if (sortValue == '3') {
+      query = 'sortby=pr-as';
+    } else if (sortValue == '4') {
+      query = 'sortby=pr-ds';
+    }
+    getData(query);
+  }
+
+
   //get data from back end
   useEffect(async () => {
-    const result = await axios.get(
-      'https://firetree.azurewebsites.net/api/products/popular',
-    );
+    getData()
+  }, []);
 
-    setData(result.data);
-  },[]);
+
 
   //get category list
   var categories = data.map(function (item) {
@@ -32,14 +60,14 @@ export default function Shop(props) {
 
 
   //remove duplicate category name to use at Category Component
-  var categoryUnique = categories.filter(function(item, index){
+  var categoryUnique = categories.filter(function (item, index) {
     return categories.indexOf(item) >= index;
   });
 
   //count will be represent how many selling item for each category
-  var count ={};
-  categories.forEach(function(i){ count[i] = (count[i] || 0 ) + 1 } );
-  
+  var count = {};
+  categories.forEach(function (i) { count[i] = (count[i] || 0) + 1 });
+
   //count total item to display at "All plants"
   const totalCount = categories.length;
 
@@ -79,7 +107,7 @@ export default function Shop(props) {
                 {/* Search by Terms */}
                 <div className="search_by_terms">
                   <form action="#" method="post" className="form-inline">
-                    <select className="custom-select widget-title">
+                    <select className="custom-select widget-title" onChange={getSortData}>
                       <option selected>Short by Popularity</option>
                       <option value={1}>Short by A-Z</option>
                       <option value={2}>Short by Z-A</option>
@@ -132,10 +160,10 @@ export default function Shop(props) {
                     {categoryUnique.map(item => (
 
                       <Category categoryName={item} categoryCount={count[item]} />
-  
+
                     ))}
-                    
-                    
+
+
 
 
 
