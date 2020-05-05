@@ -14,17 +14,16 @@ export default function Shop(props) {
 
     const result = await axios.get(
       // urlGetData,
-
       "https://firetree.azurewebsites.net/api/products/search?page=1&size=8&" + query
     );
-    console.log(result.data);
 
+    console.log(result.data);
     setData(result.data.items);
   }
 
   let query = '';
 
-  const getSortData = (data) => {  
+  const getSortData = (data) => {
     let sortValue = data.target.value;
     if (sortValue == '1') {
       query = 'sortby=al-as';
@@ -38,19 +37,15 @@ export default function Shop(props) {
     getData(query);
   }
 
-
   //get data from back end
   useEffect(async () => {
     getData()
   }, []);
 
-
-
   //get category list
   var categories = data.map(function (item) {
     return item.category.title;
   });
-
 
   //remove duplicate category name to use at Category Component
   var categoryUnique = categories.filter(function (item, index) {
@@ -63,7 +58,6 @@ export default function Shop(props) {
 
   //count total item to display at "All plants"
   const totalCount = categories.length;
-
 
   return (
     <div>
@@ -131,17 +125,9 @@ export default function Shop(props) {
                       <label className="custom-control-label" htmlFor="customCheck1">All plants <span className="text-muted">({totalCount})</span></label>
                     </div>
                     {/* Single Checkbox */}
-
                     {categoryUnique.map(item => (
-
                       <Category categoryName={item} categoryCount={count[item]} />
-
                     ))}
-
-
-
-
-
                   </div>
                 </div>
                 {/* Shop Widget */}
@@ -263,13 +249,6 @@ export default function Shop(props) {
         </div>
       </section>
       {/* ##### Shop Area End ##### */}
-      {/* ##### Footer Area Start ##### */}
-      <footer
-        className="footer-area bg-img"
-        style={{ backgroundImage: "url(img/bg-img/3.jpg)" }}
-      >
-        {/* Main Footer Area */}
-      </footer>
     </div>
   );
 }
