@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import NavBar from "./NavBar";
-import Header from "./Header";
-import Footer from "./Footer";
 import ContactForm from "./ContactForm";
 import ContactDetails from "./ContactDetails";
 import Map from "./Map";
+import BreadCrumbNCover from "./BreadCrumbNCover";
+const pageName = "Contact us";
 
 export default class ContactPage extends Component {
   render() {
     return (
       <div>
+        <BreadCrumbNCover pageName={pageName} />
         <ContactDetails />
         <section className="contact-area section-padding-100-0">
           <div className="container">

@@ -6,8 +6,8 @@ export default class Home extends Component {
 
         var slides = [
             {
-                title: "Plants exist in the weather and light rays that surround them",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque ante nec ipsum iaculis, ac iaculis ipsum porttitor. Vivamus cursus nisl lectus, id mattis nisl lobortis eu. Duis diam augue, dapibus ut dolor at, mattis maximus dolor.",
+                title: "Garden your way towards better bushfire safety",
+                description: "Fire retardant trees will make sure your greenery is shielded and your safety prioritised. Having a garden containing fire retardant plants will alleviate the fire destruction to your house by slowing the fire and reducing radiant heat.",
                 imageUrl: "img/bg-img/1.jpg"
             }
         ];

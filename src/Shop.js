@@ -1,19 +1,12 @@
-
-import React, { useState, useEffect } from 'react';
-import NavBar from "./NavBar";
-import Header from "./Header";
-import Footer from "./Footer";
-import ContactForm from "./ContactForm";
-import ContactDetails from "./ContactDetails";
-import Map from "./Map";
+import React, { useState, useEffect } from "react";
 import { Product } from "./components/Product";
-import { Category } from "./components/Category"
-import axios from 'axios';
+import { Category } from "./components/Category";
+import axios from "axios";
+import BreadCrumbNCover from "./BreadCrumbNCover";
+const pageName = "Shop";
 
 
 export default function Shop(props) {
-
-
   const [data, setData] = useState([]);
 
   const getData = async (query) => {
@@ -21,17 +14,16 @@ export default function Shop(props) {
 
     const result = await axios.get(
       // urlGetData,
-
       "https://firetree.azurewebsites.net/api/products/search?page=1&size=8&" + query
     );
-    console.log(result.data);
 
+    console.log(result.data);
     setData(result.data.items);
   }
 
   let query = '';
 
-  const getSortData = (data) => {  
+  const getSortData = (data) => {
     let sortValue = data.target.value;
     if (sortValue == '1') {
       query = 'sortby=al-as';
@@ -45,19 +37,15 @@ export default function Shop(props) {
     getData(query);
   }
 
-
   //get data from back end
   useEffect(async () => {
     getData()
   }, []);
 
-
-
   //get category list
   var categories = data.map(function (item) {
     return item.category.title;
   });
-
 
   //remove duplicate category name to use at Category Component
   var categoryUnique = categories.filter(function (item, index) {
@@ -71,28 +59,9 @@ export default function Shop(props) {
   //count total item to display at "All plants"
   const totalCount = categories.length;
 
-
   return (
     <div>
-      <div className="breadcrumb-area">
-        {/* Top Breadcrumb Area */}
-        <div className="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style={{ backgroundImage: 'url(img/bg-img/24.jpg)' }}>
-          <h2>Shop</h2>
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item"><a href="#"><i className="fa fa-home" /> Home</a></li>
-                  <li className="breadcrumb-item active" aria-current="page">Shop</li>
-                </ol>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* ##### Breadcrumb Area End ##### */}
+      <BreadCrumbNCover pageName={pageName} />
       {/* ##### Shop Area Start ##### */}
       <section className="shop-page section-padding-0-100">
         <div className="container">
@@ -156,17 +125,9 @@ export default function Shop(props) {
                       <label className="custom-control-label" htmlFor="customCheck1">All plants <span className="text-muted">({totalCount})</span></label>
                     </div>
                     {/* Single Checkbox */}
-
                     {categoryUnique.map(item => (
-
                       <Category categoryName={item} categoryCount={count[item]} />
-
                     ))}
-
-
-
-
-
                   </div>
                 </div>
                 {/* Shop Widget */}
@@ -288,13 +249,6 @@ export default function Shop(props) {
         </div>
       </section>
       {/* ##### Shop Area End ##### */}
-      {/* ##### Footer Area Start ##### */}
-      <footer className="footer-area bg-img" style={{ backgroundImage: 'url(img/bg-img/3.jpg)' }}>
-        {/* Main Footer Area */}
-
-      </footer>
     </div>
-
-  )
-
+  );
 }

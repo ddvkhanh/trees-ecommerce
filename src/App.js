@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Home from './Home';
 import ContactPage from './ContactPage';
 import Shop from './Shop';
+import About from './About';
 
 export default class App extends Component {
   render() {
@@ -16,6 +17,8 @@ export default class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/contact" component={ContactPage} />
             <Route exact path="/shop" component={Shop} />
+            <Route exact path="/about" component={About} />
+
           </Switch>
         </BrowserRouter>
         <Footer />
