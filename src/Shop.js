@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { connect } from 'react-redux';
 import { Product } from "./components/Product";
 import { Category } from "./components/Category";
 import axios from "axios";
 import BreadCrumbNCover from "./BreadCrumbNCover";
+import { addItem } from './actions/cartActions'
+
 const pageName = "Shop";
 
-
-export default function Shop(props) {
+function Shop(props) {
   const [data, setData] = useState([]);
 
+
   const getData = async (query) => {
-    // console.log(query);
 
     const result = await axios.get(
       // urlGetData,
       "https://firetree.azurewebsites.net/api/products/search?page=1&size=8&" + query
     );
 
-    console.log(result.data);
     setData(result.data.items);
   }
 
@@ -58,6 +59,12 @@ export default function Shop(props) {
 
   //count total item to display at "All plants"
   const totalCount = categories.length;
+
+
+
+  const handleAddItem = (item) => {
+    props.addItem(item);
+  }
 
   return (
     <div>
@@ -230,7 +237,7 @@ export default function Shop(props) {
                   {/* Single Product Area */}
 
                   {data.map(item => (
-                    <Product productName={item.title} productImage={item.imageLargeUrl} productPrice={item.sellingPrice} sellerName={item.businessProfile.name} />
+                    <Product productName={item.title} productImage={item.imageLargeUrl} productPrice={item.sellingPrice} sellerName={item.businessProfile.name} onClick={handleAddItem} />
                   ))}
 
                 </div>
@@ -252,3 +259,8 @@ export default function Shop(props) {
     </div>
   );
 }
+
+
+export default connect(null, { addItem })(Shop); //connect co 2 bien, 1: lay data ve tu store. 2. trigger action
+
+//store ->reducer -> action -> shop ->product 

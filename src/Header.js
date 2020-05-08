@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import NavBar from './NavBar';
+import { connect } from "react-redux";
 const email=window.$email;
 const phone=window.$phone;
 
-export default class Header extends Component {
+ class Header extends Component {
   render() {
     return (
       <header className="header-area">
@@ -79,7 +80,7 @@ export default class Header extends Component {
                           aria-hidden="true"
                         ></i>{" "}
                         <span>
-                          Cart <span className="cart-quantity">(1)</span>
+                          Cart <span className="cart-quantity">({this.props.items.length})</span>
                         </span>
                       </a>
                     </div>
@@ -94,3 +95,11 @@ export default class Header extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    items: state.carts.items
+  };
+};
+
+export default connect(mapStateToProps)(Header);

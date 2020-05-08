@@ -1,7 +1,9 @@
 import React from 'react';
 
 export function Product (props){
-    let {productName, productImage, productUrl, productPrice, sellerName } = props;
+    let {productName, productImage, productUrl, productPrice, sellerName, onClick } = props;
+    
+
 
     if(productImage ==null){
 
@@ -16,7 +18,7 @@ export function Product (props){
                     <a href={productUrl}><img src={productImage} alt="" /></a>
                     <div className="product-meta d-flex">
                         <a href="#" className="wishlist-btn"><i className="icon_heart_alt" /></a>
-                        <a href="cart.html" className="add-to-cart-btn">Add to cart</a>
+                        <a className="add-to-cart-btn" onClick = {()=>onClick({productName, productImage, productUrl, productPrice, sellerName})}>Add to cart</a>
                         <a href="#" className="compare-btn"><i className="arrow_left-right_alt" /></a>
                     </div>
                 </div>
