@@ -74,7 +74,7 @@ const phone=window.$phone;
                     </div>
                     {/* <!-- Cart --> */}
                     <div className="cart">
-                      <a href="#">
+                      <a href="./cart">
                         <i
                           className="fa fa-shopping-cart"
                           aria-hidden="true"

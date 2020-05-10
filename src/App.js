@@ -8,6 +8,7 @@ import Shop from './Shop';
 import About from './About';
 import { Provider } from 'react-redux';
 import store from './store';
+import Cart from './Cart';
 
 export default class App extends Component {
   render() {
@@ -21,6 +22,7 @@ export default class App extends Component {
               <Route exact path="/contact" component={ContactPage} />
               <Route exact path="/shop" component={Shop} />
               <Route exact path="/about" component={About} />
+              <Route exact path="/cart" component={Cart} />
 
             </Switch>
           </BrowserRouter>
