@@ -79,7 +79,28 @@ function Shop(props) {
   };
   //count total item to display at "All plants"
   const totalCount = categories.length;
-
+  const sortOptions = [
+    {
+      value:0,
+      description:"Sort by Popularity"
+    },
+    {
+      value:1,
+      description:"Sort by A-Z"
+    },
+    {
+      value:2,
+      description:"Sort by Z-A"
+    },
+    {
+      value:3,
+      description:"Sort by price low to high"
+    },
+    {
+      value:4,
+      description:"Sort by price high to low"
+    }
+  ]
   return (
     <div>
       <BreadCrumbNCover pageName={pageName} />
@@ -100,14 +121,18 @@ function Shop(props) {
                 <div className="search_by_terms">
                   <form action="#" method="post" className="form-inline">
                     <select
+                      defaultValue={sortOptions[0].value}
                       className="custom-select widget-title"
                       onChange={getSortData}
                     >
-                      <option selected>Short by Popularity</option>
-                      <option value={1}>Short by A-Z</option>
-                      <option value={2}>Short by Z-A</option>
-                      <option value={3}>Short by price low to high</option>
-                      <option value={4}>Short by price high to low</option>
+                      {sortOptions.map((option) => 
+                        
+                        <option key={option.value} 
+                          value={option.value}>
+                          {option.description}
+                        </option>
+                      
+                      )}
                     </select>
                   </form>
                 </div>
@@ -154,6 +179,7 @@ function Shop(props) {
                   <div className="widget-desc">
                     {sellerUnique.map((item) => (
                       <Seller
+                        key = {item}
                         seller={item}
                         sellerProductCount={countSellerItem[item]}
                       />
@@ -168,9 +194,9 @@ function Shop(props) {
                 <div className="row">
                   {/* Single Product Area */}
                   {data.map((item) => (
-                    <Link to={`${PRODUCT_URL}/${item.id}`}>
+                    <Link key={item.id} to={`${PRODUCT_URL}/${item.id}`}>
                       <ProductCard
-                        key={item.id}
+                        
                         id={item.id}
                         productName={item.title}
                         productImage={item.imageLargeUrl}
