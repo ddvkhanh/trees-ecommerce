@@ -8,6 +8,7 @@ export function ProductCard(props) {
     productUrl,
     productPrice,
     sellerName,
+    onAddToCardClick
   } = props;
 
   productImage = productImage
@@ -17,7 +18,9 @@ export function ProductCard(props) {
   const onAddToCardClicked = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    console.log("add to cart ", event, props);
+    console.log("adding to cart ", event, props);
+    onAddToCardClick();
+ 
   };
   return (
     <div className="col-12 col-sm-6 col-lg-4">
