@@ -11,10 +11,10 @@ const pageName = "Shop";
 
 function Shop(props) {
   const [data, setData] = useState([]);
+  const [selectedCatList, setSelectedCatList] = useState([]);
 
 
   const getData = async (query) => {
-
     const result = await axios.get(
       // urlGetData,
       "https://firetree.azurewebsites.net/api/products/search?page=1&size=8&" + query
@@ -46,17 +46,35 @@ function Shop(props) {
 
   //get category list
   var categories = data.map(function (item) {
-    return item.category.title;
+    console.log(item);
+    
+    return item.category;
   });
 
+  
+  function getUniqueListBy(arr, key) {  return [...new Map(arr.map(item => [item[key], item])).values()]};
+
   //remove duplicate category name to use at Category Component
-  var categoryUnique = categories.filter(function (item, index) {
-    return categories.indexOf(item) >= index;
-  });
+  var categoryUnique = [{
+    title: "Deciduous Trees",
+    id: 2
+  }, {
+    title: "Evergreen Trees",
+    id: 1
+  }, {
+    title: "Ground Covers",
+    id: 4
+  } ];
 
   //countCatItem will be represent how many selling item for each category
   var countCatItem = {};
-  categories.forEach(function (i) { countCatItem[i] = (countCatItem[i] || 0) + 1 });
+  categories.forEach(function (i) { countCatItem[i.title] = (countCatItem[i.title] || 0) + 1 });
+
+  //check with the selectedCatList if its contain current Id return true, else return false
+  const getCatChecked = (id) => {
+    return selectedCatList.some(i => i==id)
+  }
+  
 
   //count total item to display at "All plants"
   const totalCount = categories.length;
@@ -80,6 +98,21 @@ function Shop(props) {
   const handleAddItem = (item) => {
     props.addItem(item);
   }
+
+  const handleCategoryClick = (id) => {
+    if(selectedCatList.includes(id)){
+      setSelectedCatList(selectedCatList.filter(i => i!==id))
+    } else {
+      setSelectedCatList([...selectedCatList, id]);
+    }
+
+    query = query + "&categories=" + selectedCatList.join(",");
+    console.log(query);
+    
+
+    getData(query)
+  }
+
 
   return (
     <div>
@@ -148,7 +181,7 @@ function Shop(props) {
                     </div>
                     {/* Single Checkbox */}
                     {categoryUnique.map(item => (
-                      <Category categoryName={item} categoryCount={countCatItem[item]} />
+                      <Category categoryName={item.title} categoryCount={countCatItem[item.title]} checked={getCatChecked(item.id)} key={item.id} value={item.id} onClick = {handleCategoryClick} />
                     ))}
                   </div>
                 </div>
