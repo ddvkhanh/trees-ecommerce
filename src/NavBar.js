@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import {PRODUCT_URL} from "./components/Products/Products"
 export default class NavBar extends Component {
     render() {
         return (
@@ -42,20 +42,18 @@ export default class NavBar extends Component {
                                         <a href="#">Pages</a>
                                         <ul className="dropdown">
                                             <li>
-                                                <a href="index.html">Home</a>
+                                                <a href="/">Home</a>
                                             </li>
                                             <li>
                                                 <a href="/about">About</a>
                                             </li>
                                             <li>
-                                                <a href="/shop">Shop</a>
+                                                <a href={PRODUCT_URL}>Shop</a>
                                                 <ul className="dropdown">
                                                     <li>
-                                                        <a href="/shop">Shop</a>
+                                                        <a href={PRODUCT_URL}>Shop</a>
                                                     </li>
-                                                    <li>
-                                                        <a href="shop-details.html">Shop Details</a>
-                                                    </li>
+                                                    
                                                     <li>
                                                         <a href="cart.html">Shopping Cart</a>
                                                     </li>
@@ -82,7 +80,7 @@ export default class NavBar extends Component {
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="/shop">Shop</a>
+                                        <a href={PRODUCT_URL}>Shop</a>
                                     </li>
                                     <li>
                                         <a href="portfolio.html">Portfolio</a>

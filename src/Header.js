@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import NavBar from './NavBar';
-const email=window.$email;
-const phone=window.$phone;
+import NavBar from "./NavBar";
+const email = window.$email;
+const phone = window.$phone;
 
 export default class Header extends Component {
   render() {
@@ -15,13 +15,23 @@ export default class Header extends Component {
                 <div className="top-header-content d-flex align-items-center justify-content-between">
                   {/* <!-- Top Header Content --> */}
                   <div className="top-header-meta">
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="infodeercreative@gmail.com">
+                    <a
+                      href="#"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="infodeercreative@gmail.com"
+                    >
                       <i className="fa fa-envelope-o" aria-hidden="true"></i>{" "}
                       <span>Email: </span>
                     </a>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="+1 234 122 122">
+                    <a
+                      href="#"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="+1 234 122 122"
+                    >
                       <i className="fa fa-phone" aria-hidden="true"></i>{" "}
-                      <span>Call Us:  </span>
+                      <span>Call Us: </span>
                     </a>
                   </div>
                   {/* <!-- Top Header Content --> */}
@@ -38,29 +48,29 @@ export default class Header extends Component {
                           aria-expanded="false"
                         >
                           Language
-                          </button>
+                        </button>
                         <div
                           className="dropdown-menu"
                           aria-labelledby="dropdownMenuButton"
                         >
                           <a className="dropdown-item" href="#">
                             USA
-                            </a>
+                          </a>
                           <a className="dropdown-item" href="#">
                             UK
-                            </a>
+                          </a>
                           <a className="dropdown-item" href="#">
                             Bangla
-                            </a>
+                          </a>
                           <a className="dropdown-item" href="#">
                             Hindi
-                            </a>
+                          </a>
                           <a className="dropdown-item" href="#">
                             Spanish
-                            </a>
+                          </a>
                           <a className="dropdown-item" href="#">
                             Latin
-                            </a>
+                          </a>
                         </div>
                       </div>
                     </div>

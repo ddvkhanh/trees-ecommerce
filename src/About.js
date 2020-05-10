@@ -4,8 +4,6 @@ import BreadCrumbNCover from './BreadCrumbNCover'
 import AboutServices from './AboutServices'
 
 const pageName = "About us";
-console.log(window.$email)
-console.log(window.$phone)
 export default class About extends Component {
     render() {
         return (
