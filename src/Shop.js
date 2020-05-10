@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import { Product } from "./components/Product";
 import { Category } from "./components/Category";
+import { Seller } from "./components/Seller";
 import axios from "axios";
 import BreadCrumbNCover from "./BreadCrumbNCover";
 import { addItem } from './actions/cartActions'
@@ -53,12 +54,26 @@ function Shop(props) {
     return categories.indexOf(item) >= index;
   });
 
-  //count will be represent how many selling item for each category
-  var count = {};
-  categories.forEach(function (i) { count[i] = (count[i] || 0) + 1 });
+  //countCatItem will be represent how many selling item for each category
+  var countCatItem = {};
+  categories.forEach(function (i) { countCatItem[i] = (countCatItem[i] || 0) + 1 });
 
   //count total item to display at "All plants"
   const totalCount = categories.length;
+
+  //get seller list
+  var sellers = data.map(function (item){
+    return item.businessProfile.name;
+  });
+
+  //remove duplicate seller's name to use at Seller Component
+  var sellerUnique = sellers.filter(function (item, index) {
+    return sellers.indexOf(item) >= index;
+  });
+  
+  //countSellerItem will be represent how many selling item for each category
+  var countSellerItem = {};
+  sellers.forEach(function (i) { countSellerItem[i] = (countSellerItem[i] || 0) + 1 });
 
 
 
@@ -122,7 +137,7 @@ function Shop(props) {
                   </div>
                   </div>
                 */}
-                {/* Shop Widget */}
+                {/* Shop Widget - Search by Category*/}
                 <div className="shop-widget catagory mb-50">
                   <h4 className="widget-title">Categories</h4>
                   <div className="widget-desc">
@@ -133,10 +148,26 @@ function Shop(props) {
                     </div>
                     {/* Single Checkbox */}
                     {categoryUnique.map(item => (
-                      <Category categoryName={item} categoryCount={count[item]} />
+                      <Category categoryName={item} categoryCount={countCatItem[item]} />
                     ))}
                   </div>
                 </div>
+
+
+                {/* Shop Widget - Search by Seller*/}
+                <div className="shop-widget catagory mb-50">
+                  <h4 className="widget-title">Sellers</h4>
+                  <div className="widget-desc">
+                    {/* Single Checkbox */}
+                    
+                    {/* Single Checkbox */}
+                    {sellerUnique.map(item => (
+                      <Seller seller={item} sellerProductCount={countSellerItem[item]} />
+                    ))}
+                  </div>
+                </div>
+
+
                 {/* Shop Widget */}
                 {/*
                   <div className="shop-widget sort-by mb-50">
