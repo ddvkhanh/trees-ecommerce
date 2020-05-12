@@ -47,7 +47,7 @@ export default class Footer extends Component {
               <div className="col-12 col-sm-6 col-lg-3">
                 <div className="single-footer-widget">
                   <div className="widget-title">
-                    <h5>QUICK LINK</h5>
+                    <h5>QUICK LINKS</h5>
                   </div>
                   <nav className="widget-nav">
                     <ul>
@@ -88,37 +88,6 @@ export default class Footer extends Component {
 
               {/* <!-- Single Footer Widget --> */}
               <div className="col-12 col-sm-6 col-lg-3">
-                <div className="single-footer-widget">
-                  <div className="widget-title">
-                    <h5>BEST SELLER</h5>
-                  </div>
-
-                  {/* <!-- Single Best Seller Products --> */}
-                  <div className="single-best-seller-product d-flex align-items-center">
-                    <div className="product-thumbnail">
-                      <a href="shop-details.html">
-                        <img src="img/bg-img/4.jpg" alt="" />
-                      </a>
-                    </div>
-                    <div className="product-info">
-                      <a href="shop-details.html">Cactus Flower</a>
-                      <p>$10.99</p>
-                    </div>
-                  </div>
-
-                  {/* <!-- Single Best Seller Products --> */}
-                  <div className="single-best-seller-product d-flex align-items-center">
-                    <div className="product-thumbnail">
-                      <a href="shop-details.html">
-                        <img src="img/bg-img/5.jpg" alt="" />
-                      </a>
-                    </div>
-                    <div className="product-info">
-                      <a href="shop-details.html">Tulip Flower</a>
-                      <p>$11.99</p>
-                    </div>
-                  </div>
-                </div>
               </div>
 
               {/* <!-- Single Footer Widget --> */}
