@@ -694,16 +694,26 @@ img {
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms; }
   .single-product-area .product-img {
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%;
     position: relative;
     z-index: 1;
+    overflow: hidden;
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms; }
     .single-product-area .product-img a {
       display: block; }
     .single-product-area .product-img img {
-      position: relative;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
       z-index: 1;
-      width: 100%; }
+      min-height: 100%;
+      width: auto; }
     .single-product-area .product-img .product-tag a {
       background-color: #429edf;
       border-radius: 2px;

@@ -24,7 +24,6 @@ const ApiService = {
             const actionPath ='/search'
             const url = `${API_BASE_PATH+productResourcePath+actionPath}?page=${defaultPage}&size=${defaultPageSize}`
             return  axios.get(
-
               url + (query ? "&" + query : "")
             );
          
