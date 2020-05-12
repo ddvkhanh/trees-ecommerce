@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {PRODUCT_URL} from "./components/Products/Products"
+import { PRODUCT_URL } from "./components/Products/Products"
 export default class NavBar extends Component {
     render() {
         return (
@@ -39,47 +39,6 @@ export default class NavBar extends Component {
                                         <a href="/about">About</a>
                                     </li>
                                     <li>
-                                        <a href="#">Pages</a>
-                                        <ul className="dropdown">
-                                            <li>
-                                                <a href="/">Home</a>
-                                            </li>
-                                            <li>
-                                                <a href="/about">About</a>
-                                            </li>
-                                            <li>
-                                                <a href={PRODUCT_URL}>Shop</a>
-                                                <ul className="dropdown">
-                                                    <li>
-                                                        <a href={PRODUCT_URL}>Shop</a>
-                                                    </li>
-                                                    
-                                                    <li>
-                                                        <a href="cart.html">Shopping Cart</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="checkout.html">Checkout</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="portfolio.html">Portfolio</a>
-                                                <ul className="dropdown">
-                                                    <li>
-                                                        <a href="portfolio.html">Portfolio</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-portfolio.html">Portfolio Details</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                      
-                                            <li>
-                                                <a href="contact.html">Contact</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
                                         <a href={PRODUCT_URL}>Shop</a>
                                     </li>
                                     <li>
@@ -88,10 +47,15 @@ export default class NavBar extends Component {
                                     <li>
                                         <a href="/contact">Contact</a>
                                     </li>
+                                    <li>
+                                        <a href="http://firetree.azurewebsites.net/" target="_blank">Seller Portal</a>
+                                    </li>
                                 </ul>
                                 {/* <!-- Search Icon --> */}
                                 <div id="searchIcon">
-                                    <i className="fa fa-search" aria-hidden="true"></i>
+                                    <a href={PRODUCT_URL}>
+                                        <i className="fa fa-search text-white" aria-hidden="true"></i>
+                                    </a>
                                 </div>
                             </div>
                             {/* <!-- Navbar End --> */}
