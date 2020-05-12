@@ -17,6 +17,12 @@ const ApiService = {
                 url 
             );
         },
+        getPopularProducts :  async (query) => {
+            const url = `${API_BASE_PATH + productResourcePath}/popular`
+            return  axios.get(
+                url 
+            );       
+        },
         search :  async (query) => {
             // console.log(query);
             const defaultPageSize = 8;
@@ -27,9 +33,8 @@ const ApiService = {
               url + (query ? "&" + query : "")
             );
          
-        },
+        }
     }
-
 
 }
 

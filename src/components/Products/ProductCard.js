@@ -22,8 +22,8 @@ export function ProductCard(props) {
     event.stopPropagation();
     console.log("adding to cart ", event, props);
     onAddToCardClick();
-
   };
+
   return (
     <div className="col-12 col-sm-6 col-lg-4">
       <div className="single-product-area mb-50">
@@ -43,9 +43,9 @@ export function ProductCard(props) {
           </div>
           {/* Product Info */}
           <div className="product-info mt-15 text-center">
-            <p>{productName}</p>
-            <h6>Seller: {sellerName}</h6>
-            <h6>{productPrice} Aud</h6>
+            <h6>{productName}</h6>
+            <p className="mb-0">From: {sellerName}</p>
+            <p className="mb-0">{productPrice} AUD</p>
           </div>
         </Link>
       </div>

@@ -11,6 +11,7 @@ export class ProductDetails extends Component {
   constructor(props) {
     super(props);
   }
+  
   async componentDidMount() {
     console.log("router", this.props);
     const { id } = this.props.match.params;
