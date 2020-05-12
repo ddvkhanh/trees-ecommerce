@@ -52,8 +52,8 @@ export default class Home extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="row">
-                            <div class="col-12 col-md-8 offset-md-2">
+                        <div className="row justify-content-center">
+                            <div class="col-12 col-md-8 col-lg-9">
                                 <PopularProducts />
                             </div>
                         </div>
