@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { PRODUCT_URL } from "./components/Products/Products";
 
 export default class Footer extends Component {
   render() {
@@ -46,7 +47,7 @@ export default class Footer extends Component {
               <div className="col-12 col-sm-6 col-lg-3">
                 <div className="single-footer-widget">
                   <div className="widget-title">
-                    <h5>QUICK LINK</h5>
+                    <h5>QUICK LINKS</h5>
                   </div>
                   <nav className="widget-nav">
                     <ul>
@@ -87,37 +88,6 @@ export default class Footer extends Component {
 
               {/* <!-- Single Footer Widget --> */}
               <div className="col-12 col-sm-6 col-lg-3">
-                <div className="single-footer-widget">
-                  <div className="widget-title">
-                    <h5>BEST SELLER</h5>
-                  </div>
-
-                  {/* <!-- Single Best Seller Products --> */}
-                  <div className="single-best-seller-product d-flex align-items-center">
-                    <div className="product-thumbnail">
-                      <a href="shop-details.html">
-                        <img src="img/bg-img/4.jpg" alt="" />
-                      </a>
-                    </div>
-                    <div className="product-info">
-                      <a href="shop-details.html">Cactus Flower</a>
-                      <p>$10.99</p>
-                    </div>
-                  </div>
-
-                  {/* <!-- Single Best Seller Products --> */}
-                  <div className="single-best-seller-product d-flex align-items-center">
-                    <div className="product-thumbnail">
-                      <a href="shop-details.html">
-                        <img src="img/bg-img/5.jpg" alt="" />
-                      </a>
-                    </div>
-                    <div className="product-info">
-                      <a href="shop-details.html">Tulip Flower</a>
-                      <p>$11.99</p>
-                    </div>
-                  </div>
-                </div>
               </div>
 
               {/* <!-- Single Footer Widget --> */}
@@ -160,7 +130,7 @@ export default class Footer extends Component {
               {/* <!-- Copywrite Text --> */}
               <div className="col-12 col-md-6">
                 <div className="copywrite-text">
-                  <p>
+                  <div>
                     &copy;
                       {/* <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> */}
                       Copyright &copy;
@@ -173,7 +143,7 @@ export default class Footer extends Component {
                     {/* <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> */}
                     <div id="icon-attribute">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
-                  </p>
+                  </div>
                 </div>
               </div>
               {/* <!-- Footer Nav --> */}
@@ -188,7 +158,7 @@ export default class Footer extends Component {
                         <a href="/about">About</a>
                       </li>
                       <li>
-                        <a href="/shop">Shop</a>
+                        <a href={PRODUCT_URL}>Shop</a>
                       </li>
                       <li>
                         <a href="/portfolio">Portfolio</a>

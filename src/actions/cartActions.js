@@ -2,7 +2,7 @@ import { ADD_ITEM, INCREASE_ITEM, DECREASE_ITEM, REMOVE_ITEM, DELETE_ORDER, CONF
 import axios from 'axios';
 
 export const addItem = (item) => dispatch => {
-
+    console.log("item",item)
     //dispatch type and data -> reducer
    
         dispatch({
