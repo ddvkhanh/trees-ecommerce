@@ -8,8 +8,8 @@ export default class ProductOverview extends Component {
   
 
   render() {
-    console.log("inside product overview", this.props)
-    console.log("product props", this.props.product)
+    // console.log("inside product overview", this.props)
+    // console.log("product props", this.props.product)
     const product = this.props.product;
     return (
       <div>

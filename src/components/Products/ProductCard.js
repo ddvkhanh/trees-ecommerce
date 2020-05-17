@@ -20,7 +20,7 @@ export function ProductCard(props) {
   const onAddToCardClicked = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    console.log("adding to cart ", event, props);
+    // console.log("adding to cart ", event, props);
     onAddToCardClick();
   };
 

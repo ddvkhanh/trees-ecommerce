@@ -13,15 +13,15 @@ export class ProductDetails extends Component {
   }
   
   async componentDidMount() {
-    console.log("router", this.props);
+    // console.log("router", this.props);
     const { id } = this.props.match.params;
-    console.log("id", id);
+    // console.log("id", id);
     let result = await ApiService.Products.getByProductId(id);
     this.setState({ product: result.data });
   }
 
   render() {
-    console.log("render product details");
+    // console.log("render product details");
 
     if (this.state == null) return <div></div>;
     return (

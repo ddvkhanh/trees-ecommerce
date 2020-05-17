@@ -21,8 +21,9 @@ export default class App extends Component {
             <Route path="/contact" component={ContactPage} />
             <Route path={PRODUCT_URL} component={Products} />    
             <Route path="/about" component={About} />
+            <Route path="/cart" component={Cart} />
             <Route exact path="/" component={Home} />
-            <Route exact path="/cart" component={Cart} />
+
 
             <Route path="*">
               <Redirect to="/" />

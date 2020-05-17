@@ -9,21 +9,19 @@ export default function (state = initialState, action) {
     switch (action.type) {
         //nhan duoc type,change state base on type
         case ADD_ITEM:
-            console.log(action.payload);
-            const findItem = state.items.find(i => i.productName == action.payload.productName);
-            console.log(findItem);
-            
+            // console.log(action.payload);
+            const findItem = state.items.find(i => i.id == action.payload.id);
+            // console.log(findItem);
             
             if (!findItem) {
                 action.payload.quantity = 1;
                 return {
                     ...state,
                     items: [...state.items, action.payload] //sau do se thay doi data trong store (initialState)
-
                 }
             } else {
                 const newState = state.items.map(i => {
-                    if(i.productName==action.payload.productName){
+                    if(i.id==action.payload.id){
                         i.quantity = i.quantity + 1;
                     }
                     return i;

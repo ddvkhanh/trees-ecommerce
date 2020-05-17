@@ -48,7 +48,8 @@ function Shop(props) {
     return categories.indexOf(item) >= index;
   });
 
-  console.log("Categories", categories, categoryUnique);
+  // console.log("Categories", categories, categoryUnique);
+
   //count will be represent how many selling item for each category
   var count = {};
   categories.forEach(function (i) {
@@ -71,7 +72,7 @@ function Shop(props) {
   });
 
   const handleAddItem = (item) => {
-    console.log("item", item, props)
+    // console.log("item", item, props)
 
     props.addItem(item);
   };
@@ -124,13 +125,12 @@ function Shop(props) {
                       onChange={getSortData}
                     >
                       {sortOptions.map((option) =>
-
                         <option key={option.value}
                           value={option.value}>
                           {option.description}
                         </option>
-
                       )}
+
                     </select>
                   </form>
                 </div>

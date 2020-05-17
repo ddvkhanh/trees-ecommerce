@@ -5,7 +5,7 @@ import rootReducer from "./reducers";
 const initialState = {};
 
 const middleware = [thunk];
-console.log("store", window.__REDUX_DEVTOOLS_EXTENSION__);
+// console.log("store", window.__REDUX_DEVTOOLS_EXTENSION__);
 const middleWareApplied = applyMiddleware(...middleware);
 const composed = window.__REDUX_DEVTOOLS_EXTENSION__
   ? compose(middleWareApplied, window.__REDUX_DEVTOOLS_EXTENSION__())
