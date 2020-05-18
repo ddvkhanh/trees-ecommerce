@@ -26,9 +26,10 @@ class Cart extends Component {
             firstName: '',
             lastName: '',
             phoneNumber: '',
-            email:''
+            email: '',
+            address: ''
         };
-      }
+    }
     render() {
 
         const handleIncrease = (id) => {
@@ -48,7 +49,7 @@ class Cart extends Component {
             this.props.removeItem(id);
 
         }
-        const handleChange= (e)=>{
+        const handleChange = (e) => {
             console.log(e.target.id, 'value');
             this.setState({
                 [e.target.id]: e.target.value
@@ -58,19 +59,22 @@ class Cart extends Component {
         const handleSubmit = (e) => {
             e.preventDefault();
             let data = {
-                items:this.props.items,
-                 "firstName": this.state.firstName,
-                 "lastName": this.state.lastName,
-                 "email": this.state.email,
-                 "phoneNumber":this.state.phoneNumber
-              }
-              console.log(data,'data');
-              
+                items: this.props.items,
+                "firstName": this.state.firstName,
+                "lastName": this.state.lastName,
+                "email": this.state.email,
+                "phoneNumber": this.state.phoneNumber,
+                "address": this.state.adress
+            }
+            console.log(data, 'data');
+
             axios.post('https://firetree.azurewebsites.net/api/orders/confirm', data).then(res => {
                 //'delete local storage'
                 //'redirect to thank you page'
             })
         }
+
+        const shippingFee = 10;
 
 
         return (
@@ -79,12 +83,10 @@ class Cart extends Component {
                 <div className="px-4 px-lg-0">
                     {/* For demo purpose */}
                     <div className="container text-white py-5 text-center">
-                        <h1 className="display-4">Bootstrap 4 shopping cart</h1>
-                        <h1>{this.props.items.length}</h1>
-                        <p className="lead mb-0">Build a fully structred shopping cart page using Bootstrap 4. </p>
-                        <p className="lead">Snippet by <a href="https://bootstrapious.com/snippets" className="text-white font-italic">
-                            <u>Bootstrapious</u></a>
-                        </p>
+                        <h1 className="display-4">Your order detail</h1>
+
+                        <p className="lead mb-0">Please confirm your order with detail shipping address. </p>
+                        
                     </div>
                     {/* End */}
 
@@ -129,9 +131,9 @@ class Cart extends Component {
                                                                 </div>
                                                             </th>
                                                             <td className="border-0 align-middle"><strong>{item.sellingPrice}</strong></td>
-                                                            <td className="border-0 align-middle"><strong> <span onClick={() => handleIncrease(item.id)}>IN</span> {item.quantity} <span onClick={() => handleDecrease(item.id)}>De</span></strong></td>
+                                                            <td className="border-0 align-middle"><strong> <span onClick={() => handleIncrease(item.id)}>+</span> {item.quantity} <span onClick={() => handleDecrease(item.id)}>-</span></strong></td>
                                                             <td className="border-0 align-middle"><strong>{item.quantity * item.sellingPrice}</strong></td>
-                                                            <td className="border-0 align-middle"><i className="fa fa-trash" onClick = {() => handleRemove(item.id)}/></td>
+                                                            <td className="border-0 align-middle"><i className="fa fa-trash" onClick={() => handleRemove(item.id)} /></td>
                                                         </tr>
                                                     )
                                                 }
@@ -164,6 +166,7 @@ class Cart extends Component {
                                 </div>
                             </div>
                             <div className="row py-5 p-4 bg-white rounded shadow-sm">
+                                {/*
                                 <div className="col-lg-6">
                                     <div className="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
                                     <div className="p-4">
@@ -181,31 +184,46 @@ class Cart extends Component {
                                         <textarea name cols={30} rows={2} className="form-control" defaultValue={""} />
                                     </div>
                                 </div>
+                            */}
                                 <div className="col-lg-6">
                                     <div className="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
                                     <div className="p-4">
-                                        <p className="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
                                         <ul className="list-unstyled mb-4">
-                                            <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Order Subtotal </strong><strong>$390.00</strong></li>
-                                            <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
-                                            <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Tax</strong><strong>$0.00</strong></li>
+                                            <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Order Subtotal </strong><strong>{getTotalCart(this.props.items)}</strong></li>
+                                            <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Shipping and handling</strong><strong>{shippingFee}</strong></li>
                                             <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Total</strong>
-                                                <h5 className="font-weight-bold">$400.00</h5>
+                                                <h5 className="font-weight-bold">{getTotalCart(this.props.items) + shippingFee}</h5>
                                             </li>
-
-                                                <form >
-                                                
-                                                <input type="text" placeholder="First name" aria-describedby="button-addon3" className="form-control border-0"  id='firstName' onChange={(e)=> handleChange(e)}/>
-                                                <input type="text" placeholder="Last name" aria-describedby="button-addon3" className="form-control border-0" id='lastName' onChange={(e)=> handleChange(e)} />
-                                                <input type="text" placeholder="Phone number" aria-describedby="button-addon3" className="form-control border-0" id='phoneNumber' onChange={(e)=> handleChange(e)} />
-                                                <input type="text" placeholder="Email" aria-describedby="button-addon3" className="form-control border-0" id='email' onChange={(e)=> handleChange(e)} />
-                                                <button onClick = {(e) => handleSubmit(e)} className="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</button>
-                                                </form>
-
-
-
                                         </ul>
                                     </div>
+                                </div>
+
+                                <div>
+                                    <form>
+                                        <div className="form-group">
+                                            <label>First name: </label>
+                                            <input type="text" className="form-control" id="firstName" placeholder="Enter first name" onChange={(e) => handleChange(e)} />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Last name: </label>
+                                            <input type="text" className="form-control" id="lastName" placeholder="Enter last name" onChange={(e) => handleChange(e)} />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Email address</label>
+                                            <input type="email" className="form-control" id="email" placeholder="Enter email" onChange={(e) => handleChange(e)} />
+                                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Phone number: </label>
+                                            <input type="text" className="form-control" id="phoneNumber" placeholder="Enter phone number" onChange={(e) => handleChange(e)} />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Address: </label>
+                                            <input type="text" className="form-control" id="address" placeholder="Enter detail address" onChange={(e) => handleChange(e)} />
+                                        </div>
+
+                                        <button onClick={(e) => handleSubmit(e)} className="btn btn-dark rounded-pill py-2 btn-block">Confirm order</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -222,5 +240,17 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {increaseItem, decreaseItem, removeItem})(Cart);
+export default connect(mapStateToProps, { increaseItem, decreaseItem, removeItem })(Cart);
 
+// <div>
+//     <form >
+//         <label>First name: <input type="text" aria-describedby="button-addon3" className="form-control border-0" id='firstName' onChange={(e) => handleChange(e)} />
+//         </label>
+
+//         <input type="text" aria-describedby="button-addon3" className="form-control border-0" id='lastName' onChange={(e) => handleChange(e)} />
+//         <input type="text" placeholder="Phone number" aria-describedby="button-addon3" className="form-control border-0" id='phoneNumber' onChange={(e) => handleChange(e)} />
+//         <input type="text" placeholder="Email" aria-describedby="button-addon3" className="form-control border-0" id='email' onChange={(e) => handleChange(e)} />
+//         <button onClick={(e) => handleSubmit(e)} className="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</button>
+//     </form>
+
+// </div>
