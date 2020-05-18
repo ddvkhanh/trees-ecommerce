@@ -2,13 +2,76 @@ import React, { useState, useEffect, Component } from "react";
 import BreadCrumbNCover from './BreadCrumbNCover';
 import { connect } from "react-redux";
 import { link } from "react-router-dom";
+import { increaseItem, decreaseItem, removeItem } from './actions/cartActions'
+import axios from "axios";
+
+
 
 
 const pageName = "Your order";
 
+
+const getTotalCart = (items) => {
+    let total = 0;
+    items.forEach(item => total = total + item.sellingPrice * item.quantity);
+    return total;
+}
+
+
 //  function Cart(props) 
 class Cart extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstName: '',
+            lastName: '',
+            phoneNumber: '',
+            email:''
+        };
+      }
     render() {
+
+        const handleIncrease = (id) => {
+            console.log(id, 'increase');
+            this.props.increaseItem(id);
+
+        }
+
+        const handleDecrease = (id) => {
+            console.log(id, 'decrease');
+            this.props.decreaseItem(id);
+
+        }
+
+        const handleRemove = (id) => {
+            console.log(id, 'remove');
+            this.props.removeItem(id);
+
+        }
+        const handleChange= (e)=>{
+            console.log(e.target.id, 'value');
+            this.setState({
+                [e.target.id]: e.target.value
+            })
+        }
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
+            let data = {
+                items:this.props.items,
+                 "firstName": this.state.firstName,
+                 "lastName": this.state.lastName,
+                 "email": this.state.email,
+                 "phoneNumber":this.state.phoneNumber
+              }
+              console.log(data,'data');
+              
+            axios.post('https://firetree.azurewebsites.net/api/orders/confirm', data).then(res => {
+                //'delete local storage'
+                //'redirect to thank you page'
+            })
+        }
+
 
         return (
             <div>
@@ -44,52 +107,57 @@ class Cart extends Component {
                                                         <div className="py-2 text-uppercase">Quantity</div>
                                                     </th>
                                                     <th scope="col" className="border-0 bg-light">
+                                                        <div className="py-2 text-uppercase">Total</div>
+                                                    </th>
+                                                    <th scope="col" className="border-0 bg-light">
                                                         <div className="py-2 text-uppercase">Remove</div>
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <th scope="row" className="border-0">
-                                                        <div className="p-2">
-                                                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg" alt="" width={70} className="img-fluid rounded shadow-sm" />
-                                                            <div className="ml-3 d-inline-block align-middle">
-                                                                <h5 className="mb-0"> <a href="#" className="text-dark d-inline-block align-middle">Timex Unisex Originals</a></h5><span className="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
-                                                            </div>
-                                                        </div>
-                                                    </th>
-                                                    <td className="border-0 align-middle"><strong>$79.00</strong></td>
-                                                    <td className="border-0 align-middle"><strong>3</strong></td>
-                                                    <td className="border-0 align-middle"><a href="#" className="text-dark"><i className="fa fa-trash" /></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        <div className="p-2">
-                                                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-3_cexmhn.jpg" alt="" width={70} className="img-fluid rounded shadow-sm" />
-                                                            <div className="ml-3 d-inline-block align-middle">
-                                                                <h5 className="mb-0"><a href="#" className="text-dark d-inline-block">Lumix camera lense</a></h5><span className="text-muted font-weight-normal font-italic">Category: Electronics</span>
-                                                            </div>
-                                                        </div>
-                                                    </th>
-                                                    <td className="align-middle"><strong>$79.00</strong></td>
-                                                    <td className="align-middle"><strong>3</strong></td>
-                                                    <td className="align-middle"><a href="#" className="text-dark"><i className="fa fa-trash" /></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        <div className="p-2">
-                                                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-2_qxjis2.jpg" alt="" width={70} className="img-fluid rounded shadow-sm" />
-                                                            <div className="ml-3 d-inline-block align-middle">
-                                                                <h5 className="mb-0"> <a href="#" className="text-dark d-inline-block">Gray Nike running shoe</a></h5><span className="text-muted font-weight-normal font-italic">Category: Fashion</span>
-                                                            </div>
-                                                        </div>
-                                                    </th><td className="align-middle"><strong>$79.00</strong></td>
-                                                    <td className="align-middle"><strong>3</strong></td>
-                                                    <td className="align-middle"><a href="#" className="text-dark"><i className="fa fa-trash" /></a>
-                                                    </td>
-                                                </tr>
+                                                {this.props.items.map((item) => {
+                                                    console.log(item);
+
+                                                    return (
+                                                        <tr>
+                                                            <th scope="row" className="border-0">
+                                                                <div className="p-2">
+                                                                    <img src={item.imageThumbUrl} alt="" width={70} className="img-fluid rounded shadow-sm" />
+                                                                    <div className="ml-3 d-inline-block align-middle">
+                                                                        <h5 className="mb-0"> <a href="#" className="text-dark d-inline-block align-middle">{item.title}</a></h5><span className="text-muted font-weight-normal font-italic d-block">Category: {item.category.title}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </th>
+                                                            <td className="border-0 align-middle"><strong>{item.sellingPrice}</strong></td>
+                                                            <td className="border-0 align-middle"><strong> <span onClick={() => handleIncrease(item.id)}>IN</span> {item.quantity} <span onClick={() => handleDecrease(item.id)}>De</span></strong></td>
+                                                            <td className="border-0 align-middle"><strong>{item.quantity * item.sellingPrice}</strong></td>
+                                                            <td className="border-0 align-middle"><i className="fa fa-trash" onClick = {() => handleRemove(item.id)}/></td>
+                                                        </tr>
+                                                    )
+                                                }
+                                                )}
+
+
                                             </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td scope="col" className="border-0 bg-light">
+                                                        <div className="p-2 px-3 text-uppercase">Total Cart</div>
+                                                    </td>
+                                                    <td scope="col" className="border-0 bg-light">
+                                                        <div className="py-2 text-uppercase"></div>
+                                                    </td>
+                                                    <td scope="col" className="border-0 bg-light">
+                                                        <div className="py-2 text-uppercase"></div>
+                                                    </td>
+                                                    <td scope="col" className="border-0 bg-light">
+                                                        <div className="py-2 text-uppercase">{getTotalCart(this.props.items)}</div>
+                                                    </td>
+                                                    <td scope="col" className="border-0 bg-light">
+                                                        <div className="py-2 text-uppercase"></div>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
                                         </table>
                                     </div>
                                     {/* End */}
@@ -124,7 +192,19 @@ class Cart extends Component {
                                             <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Total</strong>
                                                 <h5 className="font-weight-bold">$400.00</h5>
                                             </li>
-                                        </ul><a href="#" className="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+
+                                                <form >
+                                                
+                                                <input type="text" placeholder="First name" aria-describedby="button-addon3" className="form-control border-0"  id='firstName' onChange={(e)=> handleChange(e)}/>
+                                                <input type="text" placeholder="Last name" aria-describedby="button-addon3" className="form-control border-0" id='lastName' onChange={(e)=> handleChange(e)} />
+                                                <input type="text" placeholder="Phone number" aria-describedby="button-addon3" className="form-control border-0" id='phoneNumber' onChange={(e)=> handleChange(e)} />
+                                                <input type="text" placeholder="Email" aria-describedby="button-addon3" className="form-control border-0" id='email' onChange={(e)=> handleChange(e)} />
+                                                <button onClick = {(e) => handleSubmit(e)} className="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</button>
+                                                </form>
+
+
+
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -142,6 +222,5 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(Cart);
-
+export default connect(mapStateToProps, {increaseItem, decreaseItem, removeItem})(Cart);
 
