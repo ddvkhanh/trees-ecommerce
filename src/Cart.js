@@ -68,7 +68,7 @@ class Cart extends Component {
             }
             console.log(data, 'data');
 
-            axios.post('https://firetree.azurewebsites.net/api/orders/confirm', data).then(res => {
+            axios.post('https://firetree.azurewebsites.net/api/orders/place', data).then(res => {
                 //'delete local storage'
                 //'redirect to thank you page'
             })
