@@ -66,11 +66,12 @@ class Cart extends Component {
                 "phoneNumber": this.state.phoneNumber,
                 "address": this.state.adress
             }
-            console.log(data, 'data');
+            console.log(data, 'submit data to backend');
 
             axios.post('https://firetree.azurewebsites.net/api/orders/place', data).then(res => {
                 //'delete local storage'
                 //'redirect to thank you page'
+             
             })
         }
 
@@ -222,7 +223,7 @@ class Cart extends Component {
                                             <input type="text" className="form-control" id="address" placeholder="Enter detail address" onChange={(e) => handleChange(e)} />
                                         </div>
 
-                                        <button onClick={(e) => handleSubmit(e)} className="btn btn-dark rounded-pill py-2 btn-block">Confirm order</button>
+                                        <button onClick={(e) => handleSubmit(e)} className="btn btn-dark rounded-pill py-2 btn-block">Place order</button>
                                     </form>
                                 </div>
                             </div>
