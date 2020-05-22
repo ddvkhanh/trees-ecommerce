@@ -70,7 +70,11 @@ class Cart extends Component {
 
             axios.post('https://firetree.azurewebsites.net/api/orders/place', data).then(res => {
                 //'delete local storage'
+                localStorage.removeItem("items");
+
                 //'redirect to thank you page'
+                this.props.history.push("/thankyou");
+                        window.location.reload();
              
             })
         }
