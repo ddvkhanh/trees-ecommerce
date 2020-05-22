@@ -3,8 +3,6 @@ import { ProductCard } from "./ProductCard";
 import { Category } from "../Category";
 import BreadCrumbNCover from "../../BreadCrumbNCover";
 import ApiService from "../../service/Api";
-import { Link } from "react-router-dom";
-import { PRODUCT_URL } from "./Products";
 import { addItem } from "../../actions/cartActions";
 import { connect } from "react-redux";
 import { Seller } from "../Seller";
@@ -73,7 +71,7 @@ function Shop(props) {
   });
 
   const handleAddItem = (item) => {
-    console.log("item",item, props)
+    console.log("item", item, props)
 
     props.addItem(item);
   };
@@ -81,24 +79,24 @@ function Shop(props) {
   const totalCount = categories.length;
   const sortOptions = [
     {
-      value:0,
-      description:"Sort by Popularity"
+      value: 0,
+      description: "Sort by Popularity"
     },
     {
-      value:1,
-      description:"Sort by A-Z"
+      value: 1,
+      description: "Sort by A-Z"
     },
     {
-      value:2,
-      description:"Sort by Z-A"
+      value: 2,
+      description: "Sort by Z-A"
     },
     {
-      value:3,
-      description:"Sort by price low to high"
+      value: 3,
+      description: "Sort by price low to high"
     },
     {
-      value:4,
-      description:"Sort by price high to low"
+      value: 4,
+      description: "Sort by price high to low"
     }
   ]
   return (
@@ -125,13 +123,13 @@ function Shop(props) {
                       className="custom-select widget-title"
                       onChange={getSortData}
                     >
-                      {sortOptions.map((option) => 
-                        
-                        <option key={option.value} 
+                      {sortOptions.map((option) =>
+
+                        <option key={option.value}
                           value={option.value}>
                           {option.description}
                         </option>
-                      
+
                       )}
                     </select>
                   </form>
@@ -179,7 +177,7 @@ function Shop(props) {
                   <div className="widget-desc">
                     {sellerUnique.map((item) => (
                       <Seller
-                        key = {item}
+                        key={item}
                         seller={item}
                         sellerProductCount={countSellerItem[item]}
                       />
@@ -194,17 +192,15 @@ function Shop(props) {
                 <div className="row">
                   {/* Single Product Area */}
                   {data.map((item) => (
-                    <Link key={item.id} to={`${PRODUCT_URL}/${item.id}`}>
-                      <ProductCard
-                        
-                        id={item.id}
-                        productName={item.title}
-                        productImage={item.imageLargeUrl}
-                        productPrice={item.sellingPrice}
-                        sellerName={item.businessProfile.name}
-                        onAddToCardClick={()=>handleAddItem(item)}
-                      />
-                    </Link>
+                    <ProductCard
+                      key={item.id}
+                      id={item.id}
+                      productName={item.title}
+                      productImage={item.imageLargeUrl}
+                      productPrice={item.sellingPrice}
+                      sellerName={item.businessProfile.name}
+                      onAddToCardClick={() => handleAddItem(item)}
+                    />
                   ))}
                 </div>
               </div>

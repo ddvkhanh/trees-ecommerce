@@ -59,6 +59,9 @@ export default class NavBar extends Component {
                         <Link to="/portfolio">Portfolio</Link>
                       </li>
                       <li>
+                        <Link to ="http://firetree.azurewebsites.net/" target="_blank">Seller Portal</Link>
+                      </li>
+                      <li>
                         <Link to="/contact">Contact</Link>
                       </li>
                     </ul>
