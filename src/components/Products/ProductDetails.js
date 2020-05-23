@@ -28,7 +28,7 @@ export class ProductDetails extends Component {
       <div>
         <BreadCrumbNCover pageName={pageName} />
         <ProductOverview product={this.state.product} />
-        <TreeDetails />
+        <TreeDetails {...this.state.product} />
       </div>
     );
   }

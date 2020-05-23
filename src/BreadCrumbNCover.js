@@ -11,7 +11,7 @@ export default class BreadCrumbNCover extends Component {
           {/* <!-- Top Breadcrumb Area --> */}
           <div
             className="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
-            style={{backgroundImage: "url(img/bg-img/24.jpg)"}}
+            style={{backgroundImage: "url(/img/bg-img/24.jpg)"}}
           >
             <h2>{this.props.pageName ?? "Hello world"}</h2>
           </div>

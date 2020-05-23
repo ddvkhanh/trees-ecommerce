@@ -10,10 +10,13 @@ export default class TreeDetails extends Component {
     }
     constructor (props){
         super(props)
-
+        console.log("props",props)
+       
     }
     
     render() {
+        //const description = JSON.parse(this.props.description);
+        console.log("desc",this.props.description)
         return (
             <div className="container">
             <div className="row">
@@ -25,7 +28,7 @@ export default class TreeDetails extends Component {
                                 <a href="#description" className="nav-link active" data-toggle="tab" role="tab">Description</a>
                             </li>
                             <li className="nav-item">
-                                <a href="#addi-info" className="nav-link" data-toggle="tab" role="tab">Additional Information</a>
+                                <a href="#addi-info" className="nav-link" data-toggle="tab" role="tab">Seller Information</a>
                             </li>
                         </ul>
                         {/* <!-- Tab Content --> */}
@@ -37,14 +40,10 @@ export default class TreeDetails extends Component {
                             </div>
                             <div role="tabpanel" className="tab-pane fade" id="addi-info">
                                 <div className="additional_info_area">
-                                    <p>What should I do if I receive a damaged parcel?
-                                        <br/> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit impedit similique qui, itaque delectus labore.</span></p>
-                                    <p>I have received my order but the wrong item was delivered to me.
-                                        <br/> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quam voluptatum beatae harum tempore, ab?</span></p>
-                                    <p>Product Receipt and Acceptance Confirmation Process
-                                        <br/> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum ducimus, temporibus soluta impedit minus rerum?</span></p>
-                                    <p>How do I cancel my order?
-                                        <br/> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum eius eum, minima!</span></p>
+                                    <p>Seller name: {this.props.businessProfile.name}</p>
+                                    <p>Address: {this.props.businessProfile.address}</p>
+                                    <p>Email: {this.props.businessProfile.email}</p>
+
                                 </div>
                             </div>
                             </div>
