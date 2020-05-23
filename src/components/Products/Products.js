@@ -18,8 +18,6 @@ function Products() {
    
     console.log("path ", path,url)
     return (
-    
-  
         <Switch>
           <Route exact path={path}>
             <Shop/>
@@ -28,7 +26,6 @@ function Products() {
           
           </Route>
         </Switch>
-
     );
   }
 
