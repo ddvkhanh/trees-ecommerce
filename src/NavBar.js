@@ -42,7 +42,7 @@ export default class NavBar extends Component {
                                         <a href={PRODUCT_URL}>Shop</a>
                                     </li>
                                     <li>
-                                        <a href="portfolio.html">Portfolio</a>
+                                        <a href="portfolio">Portfolio</a>
                                     </li>
                                     <li>
                                         <a href="/contact">Contact</a>
