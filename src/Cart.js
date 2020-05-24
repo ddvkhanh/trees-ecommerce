@@ -193,6 +193,7 @@ class Cart extends Component {
                                     <div className="p-4">
                                         <ul className="list-unstyled mb-4">
                                             <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Order Subtotal </strong><strong>{getTotalCart(this.props.items)}</strong></li>
+                                            <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Shipping Fee </strong><strong></strong></li>
                                             <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Total</strong>
                                                 <h5 className="font-weight-bold">{getTotalCart(this.props.items)}</h5>
                                             </li>
