@@ -23,12 +23,10 @@ const ApiService = {
                 url 
             );       
         },
-        search :  async (query) => {
+        search :  async (query, page = 1, pageSize = 100, category = "") => {
             // console.log(query);
-            const defaultPageSize = 8;
-            const defaultPage = 1
             const actionPath ='/search'
-            const url = `${API_BASE_PATH+productResourcePath+actionPath}?page=${defaultPage}&size=${defaultPageSize}`
+            const url = `${API_BASE_PATH+productResourcePath+actionPath}?page=${page}&size=${pageSize}&category=${category} `
             return  axios.get(
               url + (query ? "&" + query : "")
             );
