@@ -88,10 +88,6 @@ export default class Footer extends Component {
 
               {/* <!-- Single Footer Widget --> */}
               <div className="col-12 col-sm-6 col-lg-3">
-              </div>
-
-              {/* <!-- Single Footer Widget --> */}
-              <div className="col-12 col-sm-6 col-lg-3">
                 <div className="single-footer-widget">
                   <div className="widget-title">
                     <h5>CONTACT</h5>

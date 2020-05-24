@@ -41,7 +41,7 @@ export default class ProductOverview extends Component {
                 <div className="col-12 col-md-6">
                   <div className="single_product_desc">
                     <h4 className="title">{product.title}</h4>
-                    <h4 className="price">{product.sellingPrice}</h4>
+                    <h4 className="price">{product.sellingPrice} AUD</h4>
                     <div className="short_overview">
                       <p>{this.props.description}</p>
                     </div>
