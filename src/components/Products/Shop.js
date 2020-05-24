@@ -13,15 +13,15 @@ function Shop(props) {
     data: [],
     page: 1,
     totalPages: 1,
-    loading:false,
+    loading: false,
   });
 
-  const getData = async (query, queryingPage = 1, pageSize = 9) => {
+  const getData = async (query, queryingPage = 1, pageSize = 12) => {
     // prevent DDOS backend
     if (state.loading) return;
 
-    setState({...state,loading:true})
-    
+    setState({ ...state, loading: true })
+
     console.log("querying page", queryingPage, pageSize);
     var result = await ApiService.Products.search(
       query,
@@ -32,7 +32,7 @@ function Shop(props) {
     const data = result.data.items;
     const { page, totalPages } = result.data;
     console.log("result", data, page, totalPages);
-    setState({ ...state, data, page, totalPages, loading:false });
+    setState({ ...state, data, page, totalPages, loading: false });
 
   };
 
@@ -217,7 +217,7 @@ function Shop(props) {
                       key={item.id}
                       id={item.id}
                       productName={item.title}
-                      productImage={item.imageLargeUrl}
+                      productImage={item.imageThumbUrl}
                       productPrice={item.sellingPrice}
                       sellerName={item.businessProfile.name}
                       onAddToCardClick={() => handleAddItem(item)}
@@ -225,32 +225,35 @@ function Shop(props) {
                   ))}
                 </div>
               </div>
+
+              <div className="text-center">
+                <div className="pagination pagination-text ">
+                  Displaying page {state.page} out of {state.totalPages} pages
+                </div>
+                <div className="pagination pagination-buttons">
+                  <button
+                    className="btn alazea-btn"
+                    disabled={state.page <= 1}
+                    onClick={() => getData("", state.page - 1)}
+                  >
+                    Previous page
+                   </button>
+
+                  <button
+                    className="btn alazea-btn"
+                    disabled={state.page >= state.totalPages}
+                    onClick={() => getData("", state.page + 1)}
+                  >
+                    Next page
+                  </button>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </section>
       {/* ##### Shop Area End ##### */}
-     
-        <div className="pagination pagination-text ">
-          Displaying page {state.page} out of {state.totalPages} pages
-        </div>
-        <div className="pagination pagination-buttons">
-          <button
-            className="btn alazea-btn"
-            disabled={state.page <= 1}
-            onClick={() => getData("", state.page - 1)}
-          >
-            Previous page
-          </button>
-
-          <button
-            className="btn alazea-btn"
-            disabled={state.page >= state.totalPages}
-            onClick={() => getData("", state.page + 1)}
-          >
-            Next page
-          </button>
-        </div>
 
     </div>
   );
