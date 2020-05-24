@@ -25,7 +25,6 @@ export default class App extends Component {
             <Route path={PRODUCT_URL} component={Products} />    
             <Route path="/about" component={About} />
             <Route path="/portfolio" component={Portfolio} />
-            <Route path="/cart" component={Cart} />
             <Route exact path="/" component={Home} />
             <Route path="/thankyou" component={ThankYou} />
 
