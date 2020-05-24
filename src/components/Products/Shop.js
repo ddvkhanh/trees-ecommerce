@@ -6,15 +6,34 @@ import ApiService from "../../service/Api";
 import { addItem } from "../../actions/cartActions";
 import { connect } from "react-redux";
 import { Seller } from "../Seller";
-
+import "./shop.css";
 const pageName = "Shop";
 function Shop(props) {
-  const [data, setData] = useState([]);
+  const [state, setState] = useState({
+    data: [],
+    page: 1,
+    totalPages: 1,
+    loading:false,
+  });
 
-  const getData = async (query) => {
-    var result = await ApiService.Products.search(query);
+  const getData = async (query, queryingPage = 1, pageSize = 9) => {
+    // prevent DDOS backend
+    if (state.loading) return;
+
+    setState({...state,loading:true})
+    
+    console.log("querying page", queryingPage, pageSize);
+    var result = await ApiService.Products.search(
+      query,
+      queryingPage,
+      pageSize
+    );
     //console.log(result.data);
-    setData(result.data.items);
+    const data = result.data.items;
+    const { page, totalPages } = result.data;
+    console.log("result", data, page, totalPages);
+    setState({ ...state, data, page, totalPages, loading:false });
+
   };
 
   let query = "";
@@ -35,10 +54,15 @@ function Shop(props) {
   //get data from back end
   useEffect(() => {
     getData();
-  }, [query]);
+  }, []);
+
+  const onPageChange = (delta) => {
+    console.log("delta", delta);
+    getData(query, state.page + delta);
+  };
 
   //get category list
-  var categories = data.map(function (item) {
+  var categories = state.data.map(function (item) {
     return item.category.title;
   });
 
@@ -55,7 +79,7 @@ function Shop(props) {
     count[i] = (count[i] || 0) + 1;
   });
   //get seller list
-  var sellers = data.map(function (item) {
+  var sellers = state.data.map(function (item) {
     return item.businessProfile.name;
   });
 
@@ -71,7 +95,7 @@ function Shop(props) {
   });
 
   const handleAddItem = (item) => {
-    console.log("item", item, props)
+    console.log("item", item, props);
 
     props.addItem(item);
   };
@@ -80,25 +104,25 @@ function Shop(props) {
   const sortOptions = [
     {
       value: 0,
-      description: "Sort by Popularity"
+      description: "Sort by Popularity",
     },
     {
       value: 1,
-      description: "Sort by A-Z"
+      description: "Sort by A-Z",
     },
     {
       value: 2,
-      description: "Sort by Z-A"
+      description: "Sort by Z-A",
     },
     {
       value: 3,
-      description: "Sort by price low to high"
+      description: "Sort by price low to high",
     },
     {
       value: 4,
-      description: "Sort by price high to low"
-    }
-  ]
+      description: "Sort by price high to low",
+    },
+  ];
   return (
     <div>
       <BreadCrumbNCover pageName={pageName} />
@@ -123,14 +147,11 @@ function Shop(props) {
                       className="custom-select widget-title"
                       onChange={getSortData}
                     >
-                      {sortOptions.map((option) =>
-
-                        <option key={option.value}
-                          value={option.value}>
+                      {sortOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
                           {option.description}
                         </option>
-
-                      )}
+                      ))}
                     </select>
                   </form>
                 </div>
@@ -191,7 +212,7 @@ function Shop(props) {
               <div className="shop-products-area">
                 <div className="row">
                   {/* Single Product Area */}
-                  {data.map((item) => (
+                  {state.data.map((item) => (
                     <ProductCard
                       key={item.id}
                       id={item.id}
@@ -209,6 +230,28 @@ function Shop(props) {
         </div>
       </section>
       {/* ##### Shop Area End ##### */}
+     
+        <div className="pagination pagination-text ">
+          Displaying page {state.page} out of {state.totalPages} pages
+        </div>
+        <div className="pagination pagination-buttons">
+          <button
+            className="btn alazea-btn"
+            disabled={state.page <= 1}
+            onClick={() => getData("", state.page - 1)}
+          >
+            Previous page
+          </button>
+
+          <button
+            className="btn alazea-btn"
+            disabled={state.page >= state.totalPages}
+            onClick={() => getData("", state.page + 1)}
+          >
+            Next page
+          </button>
+        </div>
+
     </div>
   );
 }

@@ -363,15 +363,19 @@ img {
     line-height: 42px;
     text-transform: uppercase;
     font-weight: 600;
-    &.active,
-    &:hover,
-    &:focus {
-        font-size: 16px;
-        color: $pri-color;
-        font-weight: 600;
-        background-color: transparent;
-        box-shadow: none;
+    :not(.disabled)
+    {
+        &.active,
+        &:hover,
+        &:focus {
+            font-size: 16px;
+            color: $pri-color;
+            font-weight: 600;
+            background-color: transparent;
+            box-shadow: none;
+        }
     }
+
 }
 
 /* :: 4.0 Header Area CSS */
