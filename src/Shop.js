@@ -72,6 +72,7 @@ function Shop(props) {
 
   //check with the selectedCatList if its contain current Id return true, else return false
   const getCatChecked = (id) => {
+    console.log('test####');
     return selectedCatList.some(i => i==id)
   }
   
