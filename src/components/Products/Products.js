@@ -1,12 +1,12 @@
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useParams,
-    useRouteMatch
-  } from "react-router-dom";
-import React,{ Component } from "react";
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
+import React, { Component } from "react";
 import ProductDetails from "./ProductDetails";
 import Shop from "./Shop";
 
@@ -30,4 +30,4 @@ function Products() {
   }
 
 export default Products;
-export const PRODUCT_URL = "/products"; 
+export const PRODUCT_URL = "/products";
