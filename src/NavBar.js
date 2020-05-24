@@ -43,7 +43,7 @@ export default class NavBar extends Component {
               </div>
               {/* <!-- Navbar Start --> */}
               <div className="classynav">
-           
+                <Router>
                   <div>
                     <ul>
                       <li>
@@ -66,7 +66,7 @@ export default class NavBar extends Component {
                       </li>
                     </ul>
                   </div>
-            
+                </Router>
               </div>
               {/* <!-- Navbar End --> */}
             </nav>
