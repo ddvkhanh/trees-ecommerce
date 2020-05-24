@@ -43,30 +43,28 @@ export default class NavBar extends Component {
               </div>
               {/* <!-- Navbar Start --> */}
               <div className="classynav">
-                <Router>
-                  <div>
-                    <ul>
-                      <li>
-                        <Link to="/">Home</Link>
-                      </li>
-                      <li>
-                        <Link to="/about">About</Link>
-                      </li>
-                      <li>
-                        <Link to={PRODUCT_URL}>Shop</Link>
-                      </li>
-                      <li>
-                        <Link to="/portfolio">Portfolio</Link>
-                      </li>
-                      <li>
-                        <Link to ="http://firetree.azurewebsites.net/" target="_blank">Seller Portal</Link>
-                      </li>
-                      <li>
-                        <Link to="/contact">Contact</Link>
-                      </li>
-                    </ul>
-                  </div>
-                </Router>
+                <div>
+                  <ul>
+                    <li>
+                      <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                      <Link to="/about">About</Link>
+                    </li>
+                    <li>
+                      <Link to={PRODUCT_URL}>Shop</Link>
+                    </li>
+                    <li>
+                      <Link to="/portfolio">Portfolio</Link>
+                    </li>
+                    <li>
+                      <a href="http://firetree.azurewebsites.net/" target="_blank">Seller Portal</a>  {/* DO NOT USE LINK HERE */}
+                    </li>
+                    <li>
+                      <Link to="/contact">Contact</Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
               {/* <!-- Navbar End --> */}
             </nav>
