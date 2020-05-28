@@ -1,11 +1,15 @@
 import React, {Component} from "react";
+import {connect } from 'react-redux'
+import {addItem} from '../../actions/cartActions'
+ class ProductOverview extends Component {
 
-export default class ProductOverview extends Component {
 
-  constructor(props) {
-    super(props)
+  handleAddItem =  (e)=> {
+    e.preventDefault();
+    console.log(this.props.item, 'add item from ProductReview');
+
+    this.props.addItem(this.props.item);
   }
-  
 
   render() {
     // console.log("inside product overview", this.props)
@@ -26,9 +30,9 @@ export default class ProductOverview extends Component {
                         <a href="#" className="wishlist-btn">
                           <i className="icon_heart_alt" />
                         </a>
-                        <a href="cart.html" className="add-to-cart-btn">
+                        <div   className="add-to-cart-btn">
                           Add to cart
-                        </a>
+                        </div>
                         <a href="#" className="compare-btn">
                           <i className="arrow_left-right_alt" />
                         </a>
@@ -53,10 +57,10 @@ export default class ProductOverview extends Component {
                         method="post"
                       >
                         <button
-                          type="submit"
                           name="addtocart"
                           value="5"
                           className="btn alazea-btn ml-15"
+                          onClick={this.handleAddItem}
                         >
                           Add to cart
                         </button>
@@ -84,3 +88,4 @@ export default class ProductOverview extends Component {
   }
 }
 
+export default connect(null, { addItem })(ProductOverview)
