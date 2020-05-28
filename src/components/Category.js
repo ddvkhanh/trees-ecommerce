@@ -5,16 +5,16 @@ export function Category(props) {
     let {categoryName, categoryCount, value, onClick } = props;
 
     const handleOnClick = e => {
-        onClick(value);
+
+        
+        onClick(props.id);
         setChecked(!checked);
     }
 
 
     return (
         <div className="custom-control custom-checkbox d-flex align-items-center mb-2" onClick={handleOnClick}>
-            {checked
-                ? <input type="checkbox" className="custom-control-input" checked />
-                : <input type="checkbox" className="custom-control-input" />}
+            { <input type="checkbox" className="custom-control-input" checked={checked} />}
             <label className="custom-control-label" htmlFor="customCheck2">{categoryName} <span className="text-muted">({categoryCount})</span></label>
         </div>
     );
