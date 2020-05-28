@@ -16,6 +16,8 @@ function Shop(props) {
   const [data, setData] = useState({ original: [], filtered: [] });
   const [plantCheckBoxes, setPlantBoxes] = useState([]);
   const [sellerCheckBoxes, setsellerBoxes] = useState([]);
+  const [filterCat, setFilterCat] = useState([]);
+
   const [state, setState] = useState({
     data: [],
     page: 1,
@@ -23,8 +25,8 @@ function Shop(props) {
     loading: false,
   });
 
-  const getData = async (query, queryingPage = 1, pageSize = 12) => {
-    // prevent DDOS backend
+  const getData = async (query, queryingPage = 1, pageSize = 100) => {
+    // prcatName DDOS backend
     if (state.loading) return;
 
     setState({ ...state, loading: true })
@@ -43,7 +45,47 @@ function Shop(props) {
 
   };
 
-  const handleCategoryClick = (event, category) => {
+  const filterData = ()=> {
+    let sortedData = []
+    console.log(state.data);
+    
+    if(sort){
+      switch (sort) {
+        case 'sortby=al-as':
+          sortedData = state.data.sort((a,b )=>  a.title < b.title ? -1 : 1)
+          break;
+
+        case 'sortby=al-ds':
+          sortedData = state.data.sort((a,b )=>  a.title > b.title ? -1 : 1)
+          break;
+
+        case 'sortby=pr-as':
+        sortedData = state.data.sort((a,b )=>  a.sellingPrice - b.sellingPrice)
+        break;
+
+        case 'sortby=pr-ds':
+        sortedData = state.data.sort((a,b )=>  b.sellingPrice -a.sellingPrice)
+        break;
+      
+        default:
+          break;
+      }
+    }
+    if(filterCat.length ===0) return state.data
+   return  state.data.filter(item =>  filterCat.includes( item.category.title)
+  )
+  }
+
+  const handleCategoryClick = (catName, category) => {
+  let newFilter = []
+   if(filterCat.includes(catName)) {
+      newFilter = filterCat.filter(i => i!= catName)
+   } else {
+    newFilter =  [...filterCat, catName]
+   }
+   setFilterCat(newFilter)
+  
+   
     const originalData = data.original;
     let tmpData = [];
     originalData.map((val, index) => {
@@ -52,6 +94,7 @@ function Shop(props) {
         tmpData.push(val);
       }
     });
+    console.log(originalData,' da');
     setData({
       original: originalData,
       filtered: tmpData
@@ -66,16 +109,22 @@ function Shop(props) {
   }
 
   let query = "";
+  const [sort, setSort] = useState(null)
   const getSortData = (data) => {
     let sortValue = data.target.value;
     if (sortValue == "1") {
       query = "sortby=al-as";
+      setSort('sortby=al-as')
     } else if (sortValue == "2") {
       query = "sortby=al-ds";
+      setSort("sortby=al-ds")
     } else if (sortValue == "3") {
       query = "sortby=pr-as";
+      setSort("sortby=pr-as")
     } else if (sortValue == "4") {
       query = "sortby=pr-ds";
+
+        setSort("sortby=pr-ds")
     }
   };
 
@@ -115,11 +164,14 @@ function Shop(props) {
         tmpData.push(val);
       }
     });
+    console.log(tmpData,'filtered');
+    
     setData({
       original: originalData,
       filtered: tmpData
     });
   }
+console.log(data.filtered,'data');
 
   //get seller list
   var sellers = state.data.map(function (item) {
@@ -136,7 +188,7 @@ function Shop(props) {
   });
 
   const handleAddItem = (item) => {
-    console.log("item", item, props);
+console.log(item, 'item');
 
     props.addItem(item);
   };
@@ -207,6 +259,7 @@ function Shop(props) {
                   <h4 className="widget-title">Categories</h4>
                   <div className="widget-desc">
                     {/* Single Checkbox */}
+                    {/* 
                     <div className="custom-control custom-checkbox d-flex align-items-center mb-2"
                       onClick={showAllItems}>
                       <input
@@ -222,6 +275,9 @@ function Shop(props) {
                         <span className="text-muted">({totalCount})</span>
                       </label>
                     </div>
+                    */}
+
+
                     {/* Single Checkbox */}
                     {uniqueCategories.map((item, index) => (
                       <Category
@@ -229,12 +285,13 @@ function Shop(props) {
                         id={item}
                         categoryName={item}
                         categoryCount={count[item]}
-                        onClick={(e) => handleCategoryClick(e, item)}
+                        onClick={handleCategoryClick}
                       />
                     ))}
                   </div>
                 </div>
                 {/* Shop Widget - Search by Seller*/}
+                {/* 
                 <div className="shop-widget catagory mb-50">
                   <h4 className="widget-title">Sellers</h4>
                   <div className="widget-desc">
@@ -263,6 +320,7 @@ function Shop(props) {
                     ))}
                   </div>
                 </div>
+                */}
               </div>
             </div>
             {/* All Products Area */}
@@ -270,7 +328,7 @@ function Shop(props) {
               <div className="shop-products-area">
                 <div className="row">
                   {/* Single Product Area */}
-                  {state.data.map((item) => (
+                  {filterData().map((item) => (
                     <ProductCard
                       key={item.id}
                       id={item.id}
