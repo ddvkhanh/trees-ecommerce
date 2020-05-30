@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import BreadCrumbNCover from "./BreadCrumbNCover";
-const pageName = "Portfolio";
+const pageName = "Research";
 
 const referencePageURL =
   "https://drive.google.com/file/d/1OZ-QXh2LtxlVmx2bpNRYXC2jfQdmlB7y/view?usp=sharing";

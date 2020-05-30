@@ -3,7 +3,7 @@ import { BrowserRouter, Link, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import Home from "./Home";
-import Portfolio from "./Portfolio";
+import Research from "./Research";
 import ContactPage from "./ContactPage";
 import About from "./About";
 import Products, {PRODUCT_URL}  from "./components/Products/Products"
@@ -24,7 +24,7 @@ export default class App extends Component {
             <Route path="/contact" component={ContactPage} />
             <Route path={PRODUCT_URL} component={Products} />    
             <Route path="/about" component={About} />
-            <Route path="/portfolio" component={Portfolio} />
+            <Route path="/research" component={Research} />
             <Route exact path="/" component={Home} />
             <Route path="/thankyou" component={ThankYou} />
             <Route path="/cart" component={Cart} />

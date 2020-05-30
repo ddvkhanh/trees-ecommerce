@@ -20,9 +20,9 @@ class Header extends Component {
                   <div className="top-header-meta d-flex">
                     {/* <!-- Login --> */}
                     <div className="login">
-                      <a href="#">
+                      <a href= "http://firetree.azurewebsites.net/" target="_blank">
                         <i className="fa fa-user" aria-hidden="true"></i>{" "}
-                        <span>Login</span>
+                        <span>Seller Portal</span>
                       </a>
                     </div>
                     {/* <!-- Cart --> */}

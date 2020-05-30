@@ -10,12 +10,10 @@ export function ProductCard(props) {
     productUrl,
     productPrice,
     sellerName,
-    onAddToCardClick
+    onAddToCardClick,
   } = props;
 
-  productImage = productImage
-    ? productImage
-    : "img/product-not-found.png";
+  productImage = productImage ? productImage : "img/product-not-found.png";
 
   const onAddToCardClicked = (event) => {
     event.preventDefault();
@@ -32,12 +30,12 @@ export function ProductCard(props) {
           <div className="product-img border">
             <img src={productImage} alt="" />
             <div className="product-meta d-flex">
-              <button href="#" className="wishlist-btn">
-                <i className="icon_heart_alt" />
-              </button>
-              <button className="add-to-cart-btn" onClick={onAddToCardClicked}>Add to Cart</button>
-              <button href="#" className="compare-btn">
-                <i className="arrow_left-right_alt" />
+              <button
+                id="add-to-cart-mini"
+                className="btn alazea-btn"
+                onClick={onAddToCardClicked}
+              >
+                Add to Cart
               </button>
             </div>
           </div>

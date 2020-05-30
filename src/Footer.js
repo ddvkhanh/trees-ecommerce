@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { PRODUCT_URL } from "./components/Products/Products";
+import {Link} from "react-router-dom";
+
 
 export default class Footer extends Component {
   render() {
@@ -21,8 +23,9 @@ export default class Footer extends Component {
                     </a>
                   </div>
                   <p>
-                    Want to keep up with our activities? Subscribe to our social media channels below and stay in touch!
-                    </p>
+                    Want to keep up with our activities? Subscribe to our social
+                    media channels below and stay in touch!
+                  </p>
                   <div className="social-info">
                     <a href="#">
                       <i className="fa fa-facebook" aria-hidden="true"></i>
@@ -96,19 +99,19 @@ export default class Footer extends Component {
                   <div className="contact-information">
                     <p>
                       <span>Address:</span> 505 Silk Rd, New York
-                      </p>
+                    </p>
                     <p>
                       <span>Phone:</span> +1 234 122 122
-                      </p>
+                    </p>
                     <p>
                       <span>Email:</span> info.deercreative@gmail.com
-                      </p>
+                    </p>
                     <p>
                       <span>Open hours:</span> Mon - Sun: 8 AM to 9 PM
-                      </p>
+                    </p>
                     <p>
                       <span>Happy hours:</span> Sat: 2 PM to 4 PM
-                      </p>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -128,17 +131,30 @@ export default class Footer extends Component {
                 <div className="copywrite-text">
                   <div>
                     &copy;
-                      {/* <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> */}
-                      Copyright &copy;
-                      <script>document.write(new Date().getFullYear());</script>{" "}
-                      All rights reserved | This template is made with{" "}
+                    {/* <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> */}
+                    Copyright &copy;
+                    <script>
+                      document.write(new Date().getFullYear());
+                    </script>{" "}
+                    All rights reserved | This template is made with{" "}
                     <i className="fa fa-heart-o" aria-hidden="true"></i> by{" "}
                     <a href="https://colorlib.com" target="_blank">
                       Colorlib
-                      </a>
+                    </a>
                     {/* <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> */}
-                    <div id="icon-attribute">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-
+                    <div id="icon-attribute">
+                      Icons made by{" "}
+                      <a
+                        href="https://www.flaticon.com/authors/freepik"
+                        title="Freepik"
+                      >
+                        Freepik
+                      </a>{" "}
+                      from{" "}
+                      <a href="https://www.flaticon.com/" title="Flaticon">
+                        www.flaticon.com
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -148,19 +164,19 @@ export default class Footer extends Component {
                   <nav>
                     <ul>
                       <li>
-                        <a href="">Home</a>
+                        <Link to="/">Home</Link>
                       </li>
                       <li>
-                        <a href="/about">About</a>
+                        <Link to="/about">About</Link>
                       </li>
                       <li>
-                        <a href={PRODUCT_URL}>Shop</a>
+                        <Link to={PRODUCT_URL}>Shop</Link>
                       </li>
                       <li>
-                        <a href="/portfolio">Portfolio</a>
+                        <Link to="/research">Research</Link>
                       </li>
                       <li>
-                        <a href="/contact">Contact</a>
+                        <Link to="/contact">Contact</Link>
                       </li>
                     </ul>
                   </nav>

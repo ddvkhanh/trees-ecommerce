@@ -6,15 +6,16 @@ import {addItem} from '../../actions/cartActions'
 
   handleAddItem =  (e)=> {
     e.preventDefault();
-    console.log(this.props.item, 'add item from ProductReview');
+    console.log(this.props.product, 'add item from ProductReview');
 
-    this.props.addItem(this.props.item);
+    this.props.addItem(this.props.product);
   }
 
   render() {
     // console.log("inside product overview", this.props)
     // console.log("product props", this.props.product)
     const product = this.props.product;
+    console.log("props of this: ",this.props);
     return (
       <div>
         <section className="single_product_details_area mb-50">
@@ -27,15 +28,7 @@ import {addItem} from '../../actions/cartActions'
                     <div className="product-img">
                       <img src={product.imageLargeUrl} alt="" />
                       <div className="product-meta d-flex">
-                        <a href="#" className="wishlist-btn">
-                          <i className="icon_heart_alt" />
-                        </a>
-                        <div   className="add-to-cart-btn">
-                          Add to cart
-                        </div>
-                        <a href="#" className="compare-btn">
-                          <i className="arrow_left-right_alt" />
-                        </a>
+                        
                       </div>
                     </div>
                   </div>
@@ -74,7 +67,7 @@ import {addItem} from '../../actions/cartActions'
                         <span>Price:</span> <span>{product.sellingPrice}</span>
                       </p>
                       <p>
-                        <span>Seller:</span> <span>{product.businessProfile.name}</span>
+                        <span>Seller:</span> <span>{product?.businessProfile?.name}</span>
                       </p>
                     </div>
                   </div>

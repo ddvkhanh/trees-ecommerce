@@ -21,6 +21,23 @@ Version: - v1.0
   width: 300px;
 }
 
+.adjust-quantity:hover {
+  cursor: pointer;
+}
+
+.fa-trash{
+  cursor: pointer;
+}
+
+.adjust-quantity:active {
+  background-color: #b6b7b7;
+}
+
+#add-to-cart-mini {
+  width: 50%;
+  margin: auto;
+}
+
 #ref-image {
   max-width: 100%;
   height: auto;
@@ -34,7 +51,7 @@ Version: - v1.0
   color: teal;
 }
 
-#ref-link:hover{
+#ref-link:hover {
   background-color: #429edf;
   cursor: pointer;
 }

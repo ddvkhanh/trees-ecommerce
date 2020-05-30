@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import { PRODUCT_URL } from "./components/Products/Products";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default class NavBar extends Component {
   render() {
@@ -55,11 +48,7 @@ export default class NavBar extends Component {
                       <Link to={PRODUCT_URL}>Shop</Link>
                     </li>
                     <li>
-                      <Link to="/portfolio">Portfolio</Link>
-                    </li>
-                    <li>
-                      {/* DO NOT USE LINK TAG HERE */}
-                      <a href="http://firetree.azurewebsites.net/" target="_blank">Seller Portal</a>
+                      <Link to="/research">Research</Link>
                     </li>
                     <li>
                       <Link to="/contact">Contact</Link>

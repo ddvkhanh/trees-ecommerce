@@ -139,7 +139,7 @@ class Cart extends Component {
                                                                     </div>
                                                                 </div>
                                                             </th>
-                                                            <td className="border-0 align-middle"><strong>{item.sellingPrice}</strong></td>
+                                                            <td className="border-0 align-middle"><strong>{item.sellingPrice} AUD</strong></td>
                                                             <td className="border-0 align-middle"><strong> <span className='adjust-quantity' onClick={() => handleIncrease(item.id)}>+</span> {item.quantity} <span className='adjust-quantity' onClick={() => handleDecrease(item.id)}>-</span></strong></td>
                                                             <td className="border-0 align-middle"><strong>{item.quantity * item.sellingPrice}</strong></td>
                                                             <td className="border-0 align-middle"><i className="fa fa-trash" onClick={() => handleRemove(item.id)} /></td>
