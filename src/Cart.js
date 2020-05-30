@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { link } from "react-router-dom";
 import { increaseItem, decreaseItem, removeItem } from './actions/cartActions'
 import axios from "axios";
-
+import './Cart.css'
 
 
 
@@ -30,6 +30,7 @@ class Cart extends Component {
             address: ''
         };
     }
+
     render() {
 
         const handleIncrease = (id) => {
@@ -75,9 +76,11 @@ class Cart extends Component {
                 //'redirect to thank you page'
                 this.props.history.push("/thankyou");
                         window.location.reload();
-             
             })
         }
+
+        console.log(this.props.items,'detail item');
+        
 
 
         return (
@@ -121,7 +124,10 @@ class Cart extends Component {
                                             </thead>
                                             <tbody>
                                                 {this.props.items.map((item) => {
-                                                    console.log(item);
+                                                    console.log(item, 'check data');
+                                                    // console.log(item.product.title, 'with product');
+                                                    // console.log(item.title, 'without product');
+
 
                                                     return (
                                                         <tr>
@@ -134,7 +140,7 @@ class Cart extends Component {
                                                                 </div>
                                                             </th>
                                                             <td className="border-0 align-middle"><strong>{item.sellingPrice}</strong></td>
-                                                            <td className="border-0 align-middle"><strong> <span onClick={() => handleIncrease(item.id)}>+</span> {item.quantity} <span onClick={() => handleDecrease(item.id)}>-</span></strong></td>
+                                                            <td className="border-0 align-middle"><strong> <span className='adjust-quantity' onClick={() => handleIncrease(item.id)}>+</span> {item.quantity} <span className='adjust-quantity' onClick={() => handleDecrease(item.id)}>-</span></strong></td>
                                                             <td className="border-0 align-middle"><strong>{item.quantity * item.sellingPrice}</strong></td>
                                                             <td className="border-0 align-middle"><i className="fa fa-trash" onClick={() => handleRemove(item.id)} /></td>
                                                         </tr>
